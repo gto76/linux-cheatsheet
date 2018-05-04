@@ -63,7 +63,6 @@ ctrl+s — Scroll lock
 
 
 BASH:
-    (emacs mode, you can switch to vi mode with: set -o vi)
 ctrl+c — Interrupt, erase line
 ctrl+a — Go to beginning of line
 ctrl+e — End of line
@@ -90,8 +89,8 @@ dpkg — Low level package manager for Debian.
     -l — Lists installed packages.
     -i <package> (sudo) — Installs package from a package file.
 apt-get — Advanced Package Tool built on top of dpkg. New command called simply
-            `apt` is also available. It merges the functionalities of `apt-get` 
-            and `apt-cache`.
+        `apt` is also available. It merges the functionalities of `apt-get` and
+        `apt-cache`.
     update — Updates local list of existing packages.
     -u dist-upgrade — Upgrades by intelligently handling changing dependencies 
             with new versions of packages. To regularly update put this line: 
@@ -138,12 +137,6 @@ whereis <cmd> — Locates the binary, source, and manual page files for a
 which <cmd> — Locates only the binary of a command.
 wtf — Translates acronyms and filename suffixes.
 
-
-INSTALL MANTRA:
-./configure --help
-./configure
-make
-sudo make install
 
 
 =======

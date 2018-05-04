@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html class="ocks-org do-not-copy">
+
+<head>
+  <meta charset="utf-8">
+  <title>Comprehensive Linux Cheatsheet</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="web/showdown.min.js"></script>
+  <link rel="stylesheet" href="web/default.min.css">
+  <script src="web/highlight.min.js"></script>
+  <script src="web/script.js"></script>
+</head>
+
+<style>
+@import url(web/style.css);
+
+.join,
+.link,
+.node rect {
+  fill: none;
+  stroke: #636363;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #969696;
+}
+
+.node rect {
+  fill: white;
+}
+
+.link path,
+.node rect,
+.node text,
+.join {
+  -webkit-transition: stroke-opacity 500ms linear, fill-opacity 500ms linear;
+  -moz-transition: stroke-opacity 500ms linear, fill-opacity 500ms linear;
+  -ms-transition: stroke-opacity 500ms linear, fill-opacity 500ms linear;
+  -o-transition: stroke-opacity 500ms linear, fill-opacity 500ms linear;
+  transition: stroke-opacity 500ms linear, fill-opacity 500ms linear;
+}
+
+.node .element rect {
+  fill: #bdbdbd;
+  stroke: none;
+}
+
+.node .null rect {
+  fill: none;
+  stroke: none;
+}
+
+.node .null text {
+  fill: #636363;
+}
+
+.node .selection rect {
+  stroke: #e6550d;
+}
+
+.node .data rect {
+  stroke: #3182bd;
+}
+
+.node .datum rect {
+  fill: #d9d9d9;
+  stroke: none;
+}
+
+.node .code text {
+  font-family: monospace;
+}
+
+.node .key rect {
+  fill: #a1d99b;
+  stroke: none;
+}
+
+.link .to-key,
+.join {
+  stroke: #a1d99b;
+}
+
+.join {
+  stroke-dasharray: 2,2;
+}
+
+.link .to-null {
+  stroke-dasharray: .5,3.5;
+  stroke-linecap: round;
+}
+
+.link .from-data {
+  stroke: #3182bd;
+}
+
+.play circle {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 3px;
+}
+
+.play:hover path {
+  fill: #f00;
+}
+
+.play.mousedown circle {
+  fill: #f00;
+}
+
+.play.mousedown path {
+  fill: #fff;
+}
+
+.play rect {
+  fill: none;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+code span {
+  -webkit-transition: background 250ms linear;
+  -moz-transition: background 250ms linear;
+  -ms-transition: background 250ms linear;
+  -o-transition: background 250ms linear;
+  transition: background 250ms linear;
+}
+
+pre.prettyprint, code.prettyprint {
+  background-color: #222;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+pre.prettyprint {
+  width: 90%;
+  margin: 0.5em;
+  padding: 1em;
+  white-space: pre-wrap;
+}
+
+
+</style>
+<!-- td { 
+    padding: 3px;
+} -->
+<body>
+  <header>
+    <aside>March 14, 2018</aside>
+    <a href="../" rel="author">Jure Šorn</a>
+  </header>
+
+<h1>Gnome</h1>
+<table width=700><tbody>
+<tr><td valign="top"><strong><code>ctrl+alt+t</code></strong></td><td>Terminal</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+f</code></strong></td><td>Firefox</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+h</code></strong></td><td>Home</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+g</code></strong></td><td>Gedit</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>alt+F12</code></strong></td><td>Run command</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>alt+F1</code></strong></td><td>Minimize window</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>alt+F2</code></strong></td><td>Toggle maximize window</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>alt+F3</code></strong></td><td>Toggle full screen</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+d</code></strong></td><td>Minimize all windows</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+&lt;F1 to F6&gt;</code></strong></td><td>Terminals</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+&lt;F7 to F12&gt;</code></strong></td><td>Xwindows</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+backspace</code></strong></td><td>Restart X</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+del</code></strong></td><td>Log out</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+end</code></strong></td><td>Shutdown</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>super+pgUp/pgDn</code></strong></td><td>Switch workspace</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>middle mouse button</code></strong></td><td>Paste selected text</td></tr>
+
+</tbody></table>
+<h3>Nautilus/Nemo</h3>
+<table width=700><tbody>
+<tr><td valign="top"><strong><code>ctrl+l</code></strong></td><td>Location, show path</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+shift+n</code></strong></td><td>New folder</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+h</code></strong></td><td>Show hidden files</td></tr>
+
+</tbody></table>
+<h3>Gedit</h3>
+<table width=700><tbody>
+<tr><td valign="top"><strong><code>ctrl+g</code></strong></td><td>Find next instance of the string.</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+shift+g</code></strong></td><td>Find previous instance of the string.</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+shift+k</code></strong></td><td>Clear highlights.</td></tr>
+
+</tbody></table>
+<h3>Terminal</h3>
+<table width=700><tbody>
+<tr><td valign="top"><strong><code>ctrl+shift+c</code></strong></td><td>Copy</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+shift+v</code></strong></td><td>Paste</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>shift+ctrl+t</code></strong></td><td>New tab</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>shift+ctrl+w</code></strong></td><td>Close tab</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl PgUp/PgDn</code></strong></td><td>Switch tabs</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl +/-</code></strong></td><td>Zoom</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+d</code></strong></td><td>Close terminal</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+s</code></strong></td><td>Scroll lock</td></tr>
+
+</tbody></table>
+<h3>Bash</h3>
+<table width=700><tbody>
+<tr><td valign="top"><strong><code>ctrl+c</code></strong></td><td>Interrupt, erase line</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+a</code></strong></td><td>Go to beginning of line</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+e</code></strong></td><td>End of line</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+u</code></strong></td><td>Copy line</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+y</code></strong></td><td>Paste line</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>alt+.</code></strong></td><td>Last argument</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+r</code></strong></td><td>Search trough history</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>alt+*</code></strong></td><td>Show all matches for regular expression</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+alt+e</code></strong></td><td>Show current line passed through alias, history and shell expansion</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+x, ctrl+e</code></strong></td><td>Edit command in editor</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>ctrl+p</code></strong></td><td>Show last command (same as up arrow)</td></tr>
+
+</tbody></table>
+<h1>Awesome Terminal Commands</h1>
+<h2>Packages</h2>
+<table width=700><tbody>
+<tr><td valign="top"><strong><code>dpkg</code></strong></td><td>Low level package manager for Debian.</td></tr>
+<tr> <td></td> <td><table>
+<tr> <td><strong><code>-l</code></strong></td><td>Lists installed packages.</td></tr>
+<tr> <td><strong><code>-i &lt;package&gt; (sudo)</code></strong></td><td>Installs package from a package file.</td></tr>
+
+</table> </td> </tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>apt-get</code></strong></td><td>Advanced Package Tool built on top of dpkg. New command called simply `apt` is also available. It merges the functionalities of `apt-get` and `apt-cache`.</td></tr>
+<tr> <td></td> <td><table>
+<tr> <td><strong><code>update</code></strong></td><td>Updates local list of existing packages.</td></tr>
+<tr> <td><strong><code>-u dist-upgrade</code></strong></td><td>Upgrades by intelligently handling changing dependencies with new versions of packages. To regularly update put this line: `apt-get update && apt-get -u dist-upgrade` in `crontab`.</td></tr>
+<tr> <td><strong><code>upgrade</code></strong></td><td>Same as dist-upgrade, but will not remove installed packages or install new ones.</td></tr>
+<tr> <td><strong><code>install &lt;package&gt;</code></strong></td><td>Also updates single package.</td></tr>
+<tr> <td><strong><code>remove &lt;package&gt;</code></strong></td><td>Removes package but leaves its configurations.</td></tr>
+<tr> <td><strong><code>remove apt-listchanges</code></strong></td><td>Useful when Debian can't find a package.</td></tr>
+<tr> <td><strong><code>purge &lt;package&gt;</code></strong></td><td>Removes package and its configurations. Run `apt-get autoremove` after to remove all dependencies that are not needed anymore.</td></tr>
+<tr> <td><strong><code>autoremove</code></strong></td><td>Removes unneeded packages.</td></tr>
+<tr> <td><strong><code>source &lt;package&gt;</code></strong></td><td>Downloads code.</td></tr>
+<tr> <td><strong><code>build-dep &lt;package&gt;</code></strong></td><td>Installs the build dependencies.</td></tr>
+<tr> <td><strong><code>--yes</code></strong></td><td>Answers with 'yes' to most questions (Except the ones that can have potentially harmful consequences).</td></tr>
+<tr> <td><strong><code>--force-yes</code></strong></td><td>Answers 'yes' to all questions (Not recommended).</td></tr>
+
+</table> </td> </tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>apt-cache</code></strong></td><td>Queries the APT's internal database.</td></tr>
+<tr> <td></td> <td><table>
+<tr> <td><strong><code>search &lt;keyword&gt;</code></strong></td><td>Searches packages like `apropos`, but globally.</td></tr>
+<tr> <td><strong><code>show &lt;package&gt;</code></strong></td><td>Shows package info like version, dependencies, etc.</td></tr>
+<tr> <td><strong><code>showpkg &lt;package&gt;</code></strong></td><td>Similar, but also shows the packages that depend on the searched package (reverse dependencies).</td></tr>
+<tr> <td><strong><code>policy &lt;package&gt;</code></strong></td><td>Shows installed and remote version.</td></tr>
+
+</table> </td> </tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>apt-file</code></strong></td><td>APT package searching utility.</td></tr>
+<tr> <td></td> <td><table>
+<tr> <td><strong><code>search &lt;file&gt;</code></strong></td><td>Search in which package a file is included.</td></tr>
+<tr> <td><strong><code>update</code></strong></td><td>Updates local list of package contents.</td></tr>
+
+</table> </td> </tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>aptitude</code></strong></td><td>Enables package browsing (skin for apt-get).</td></tr>
+<tr> <td></td> <td><table>
+<tr> <td><strong><code>search '~i!~M'</code></strong></td><td>Lists installed packages that were not installed as a dependency, with short description of each.</td></tr>
+<tr> <td><strong><code>search &lt;package&gt;</code></strong></td><td>Package search.</td></tr>
+
+</table> </td> </tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>winetricks</code></strong></td><td>Installs wine applications.</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>update-alternatives</code></strong></td><td>Maintains symbolic links determining default commands.</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>unattended-upgrade</code></strong></td><td>Automatic installation of security upgrades.</td></tr>
+
+</tbody></table>
+<h3>Commands</h3>
+<table width=700><tbody>
+<tr><td valign="top"><strong><code>apropos &lt;cmd&gt;</code></strong></td><td>Searches the manual page names and descriptions (use quotes for phrases).</td></tr>
+<tr> <td></td> <td><table>
+<tr> <td><strong><code>-a</code></strong></td><td>Match all keywords.</td></tr>
+
+</table> </td> </tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>whatis &lt;cmd&gt;</code></strong></td><td>Displays one-line manual page description.</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>whereis &lt;cmd&gt;</code></strong></td><td>Locates the binary, source, and manual page files for a command.</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>which &lt;cmd&gt;</code></strong></td><td>Locates only the binary of a command.</td></tr>
+<tr style='padding:3px'><td></td><td></td></tr><tr><td valign="top"><strong><code>wtf</code></strong></td><td>Translates acronyms and filename suffixes.</td></tr>
+
+</tbody></table>
+<h2>General</h2>
+  <!-- <div id=bla></div> -->
+
+  <footer>
+    <aside>March 14, 2018</aside>
+    <a href="../" rel="author">Jure Šorn</a>
+  </footer>
+
+  <br>
+  <br>
+  <br>
+
+<!--   <script src="web/showdown.min.js"></script>
+  <link rel="stylesheet" href="web/default.min.css">
+  <script src="web/highlight.min.js"></script>
+  <script src="web/script.js"></script> -->
+  <!-- <script async="" src="highlight.min.js"></script> -->
+</body>
+</html>
