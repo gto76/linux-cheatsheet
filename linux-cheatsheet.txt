@@ -13,6 +13,7 @@
 ```             
 
 
+
 ###########
 ## GNOME ##
 ###########
@@ -76,6 +77,7 @@ ctrl+x, ctrl+e — Edit command in editor
 ctrl+p — Show last command (same as up arrow)
 
 
+
 ###############################
 ## AWESOME TERMINAL COMMANDS ##
 ###############################
@@ -84,13 +86,12 @@ ctrl+p — Show last command (same as up arrow)
 PACKAGES:
 ========
 
-dpkg -l — Lists installed packages.
+dpkg — Low level package manager for Debian.
+    -l — Lists installed packages.
     -i <package> (sudo) — Installs package from a package file.
-apt — Skin for dpkg.
-apt-get — Top level package manager.
-    --yes — Answers with 'yes' to most questions (Except the ones that can have
-            potentially harmful consequences).
-    --force-yes — Answers 'yes' to all questions (Not recommended).
+apt-get — Advanced Package Tool built on top of dpkg. New command called simply
+            `apt` is also available. It merges the functionalities of `apt-get` 
+            and `apt-cache`.
     update — Updates local list of existing packages.
     -u dist-upgrade — Upgrades by intelligently handling changing dependencies 
             with new versions of packages. To regularly update put this line: 
@@ -98,35 +99,44 @@ apt-get — Top level package manager.
     upgrade — Same as dist-upgrade, but will not remove installed packages or 
             install new ones.
     install <package> — Also updates single package.
-    autoremove — Removes unneeded packages.
     remove <package> — Removes package but leaves its configurations.
-    remove apt-listchanges — Useful when Debian cant find a package.
+    remove apt-listchanges — Useful when Debian can't find a package.
     purge <package> — Removes package and its configurations. Run `apt-get 
             autoremove` after to remove all dependencies that are not needed 
             anymore.
+    autoremove — Removes unneeded packages.
     source <package> — Downloads code.
     build-dep <package> — Installs the build dependencies.
-apt-cache — search <keyword> — Searches packages like `apropos`, but globally.
-    show <package>  — Gets info about package (version, dependencies, ...).
-    showpkg <package> — Similar but shows also reverse dependencies.
+    --yes — Answers with 'yes' to most questions (Except the ones that can have
+            potentially harmful consequences).
+    --force-yes — Answers 'yes' to all questions (Not recommended).
+apt-cache — Queries the APT's internal database. 
+    search <keyword> — Searches packages like `apropos`, but globally.
+    show <package> — Shows package info like version, dependencies, etc.
+    showpkg <package> — Similar, but also shows the packages that depend on the
+            searched package (reverse dependencies).
     policy <package> — Shows installed and remote version.
-apt-file search — Enables searching packages by file.
-    update — Updates local list of existing packages.
+apt-file — APT package searching utility.
+    search <file> — Search in which package a file is included.
+    update — Updates local list of package contents.
 aptitude — Enables package browsing (skin for apt-get).
     search '~i!~M' — Lists installed packages that were not installed as a 
             dependency, with short description of each.
     search <package> — Package search.
 winetricks — Installs wine applications.
 update-alternatives — Maintains symbolic links determining default commands.
+unattended-upgrade — Automatic installation of security upgrades.
 
-unattended-upgrade — Automatic installation of upgrades
 
-apropos — Search the manual page names and descriptions (use quotes for phrases)
-    -a — All keywords
-whatis — Short description of app
-whereis — Locates where command resides 
-which — Similar only executable
-wtf — Looks up filename suffixes database
+COMMANDS:
+apropos <cmd> — Searches the manual page names and descriptions (use quotes 
+        for phrases).
+    -a — Match all keywords.
+whatis <cmd> — Displays one-line manual page description.
+whereis <cmd> — Locates the binary, source, and manual page files for a 
+        command.
+which <cmd> — Locates only the binary of a command.
+wtf — Translates acronyms and filename suffixes.
 
 
 INSTALL MANTRA:
@@ -140,19 +150,29 @@ sudo make install
 GENERAL:
 =======
 
-su — — switch to root
-su — <user> — Switch to user
-man [<section-number>] <command> — Section numbers: 1 programs, 2 system calls, 3 library calls, 4 special files, 5 file formats, 7 miscellaneous, 8 system administration commands
-echo -n — No newline at the end
-     -e — Enable interpretation of backslashed letters
-xargs — Output from one command to arguments of another
-    -t — Echoes the command before executing it, and 
-    -p — Echoes it and asks for confirmation
-tee — Sends output of a program to a file and to a standard output
-     /dev/tty — Sends output to terminal and to standard output
-expr — Evaluate expressions (expr 1 + 1 -> 2)
-bc — Calculator: echo 1+1 | bc -> 2
-    for floating point operations use: echo "scale=5;3/4" | bc -> .75000
+su — Switches user.
+    - <username> — Switches to user.
+    - — Switches to root.
+man — Help on commands.
+    <section> — Section numbers: 1. Programs, 2. System calls, 3. Library calls,
+            4. Special files, 5. File formats, 7. Miscellaneous, 8. System 
+            administration commands
+echo — Prints passed text.
+    -n — Does not add newline at the end.
+    -e — Enables interpretation of backslashed letters.
+xargs <cmd> — Passes output from one command to arguments of another.
+    -t — Echoes the command before executing it. 
+    -p — Echoes command and asks for confirmation before execution.
+tee <file> — Sends output of a program to specified file and to standard output.
+    /dev/tty — Sends output to terminal and to standard output
+expr — Evaluates passed expression.
+    1 + 1 — Prints `2`.
+bc — Evaluates input. It's basicaly a calculator, but porvides also some control
+        sentences.
+    echo 1 + 1 | bc — Prints `2`.
+    echo "scale=5;3/4" | bc - Prints `.75000`.
+
+
 sh — Run command interpreter (shell). Can run script even if not executable.
     -c '<commands>' — Start new non-interactive shell and read commands from arguments instead of stdin
 bash — Run bash command interpreter (shell)
@@ -892,6 +912,7 @@ openmovieeditor — Gui movie editor
 aview, asciiview — ASCII art image viewer and video player
 
 
+
 #########################
 ## AWESOME LINUX FILES ##
 #########################
@@ -989,6 +1010,7 @@ VAR — "variable":
 BOOT (kernels):
 /boot/grub/menu.lst — Grub configuration file
 /etc/default/grub — Grub configuration file
+
 
 
 ###########
@@ -1095,6 +1117,7 @@ gitstats — Generates stats for git repo, outputs HTML
 VIRTUAL BOX:
 git config core.filemode false — Ignores the filemode changes made by the host system
 git config --global --unset https.proxy — If problem pulling
+
 
 
 ###########
@@ -1296,6 +1319,7 @@ VUNDLE:
 
 REFORMAT CODE:
 = — Fix identation
+
 
 
 ##########
