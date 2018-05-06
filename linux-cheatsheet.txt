@@ -552,7 +552,7 @@ ip  link show — List network interfaces
 traceroute, traceroute6, traceroute6.iputils — Traces route
 tracepath, tracepath6 — Similar (iputils package)
 mtr — Combines the functionality of the traceroute and ping
-findsmb — List info about machines that respond to SMB name queries — Windows based machines sharing their hard disks
+findsmb — List info about machines that respond to SMB name queries - Windows based machines sharing their hard disks
 /etc/services — List of internet services with their port numbers
 NetworkManager — Network management daemon, configuration file is in /etc/NetworkManager/NetworkManager.conf 
 nm-tool — Prints info 
