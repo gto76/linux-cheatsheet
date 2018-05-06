@@ -63,7 +63,7 @@ ctrl+s — Scroll lock
 
 
 BASH:
-    (emacs mode, you can switch to vi mode with: set -o vi)
+Keys when in emacs mode. You can switch to vi mode with `set -o vi` command.
 ctrl+c — Interrupt, erase line
 ctrl+a — Go to beginning of line
 ctrl+e — End of line
@@ -131,7 +131,7 @@ unattended-upgrade — Automatic installation of security upgrades.
 COMMANDS:
 apropos <cmd> — Searches the manual page names and descriptions (use quotes 
         for phrases).
-    -a — Match all keywords.
+    -a — Matches all keywords.
 whatis <cmd> — Displays one-line manual page description.
 whereis <cmd> — Locates the binary, source, and manual page files for a 
         command.
@@ -140,11 +140,12 @@ wtf — Translates acronyms and filename suffixes.
 
 
 INSTALL MANTRA:
+```
 ./configure --help
 ./configure
 make
 sudo make install
-
+```
 
 =======
 GENERAL:
@@ -313,9 +314,9 @@ BASH:
 "$1" — First argument
 "$0" — Name of the script
 $'\n' — String literal with escape sequences (there is a backslash before n)
-    If you want IFS to be a new line (useful with for loop) you need to: IFS=$'\n' — The dollar forces substitution!!!!!
+    If you want IFS to be a new line (useful with for loop) you need to: `IFS=$'\n'` - The dollar forces substitution!!!!!
     Also if you want 'while read line; do...' to preserve leading spaces and tabs, you need to set IFS=""
-$? — Exit code of last command (0 — Success)
+$? — Exit code of last command (0 - Success)
 Ctrl-Z, kill %% — Kill looping bash script
 
 test <expr> — Same as [ <expression> ], returns zero exit status if true.
@@ -339,13 +340,13 @@ let <expr> — Executes expression: let a="$b"+2
 
 $(command) — Same as `command`
 eval <variable> — Execute string as command
-$RANDOM — 0 — 32767
+$RANDOM — 0 - 32767
 input=`cat` — Getting standard input
 - — In place of a file name means standard in or out
 set -o vi — Set line editing to vi mode
 pushd . — Put current dir on stack
 popd — Pop dir from stack
-cd — — go to last dir
+cd - — go to last dir
 source <script> — Run script: for example source /etc/profile (same as . <command>)
 #!/bin/bash — Good practice to insert at beginning of a bash script
 export  PATH="$PATH:<dir>" — Add new directory to path variable
@@ -383,9 +384,13 @@ REDIRECTIONS:
 
 
 ARRAYS AND LINES:
+Reads line by line from variable. To preserve spaces use `IFS=`.
+```
 while IFS= read -r line; do
     echo "... $line ..."
-done <<< "$list" — Reading line by line from variable, use IFS= to preserve spaces
+done <<< "$list" — 
+```
+
 ${a[1]} — Value of the second element of the array
 for c in ${a[@]} — Iterate over array
 ${varname:offset:length} — Get substring: s="aeiou"; ${s:3:1} -> o
@@ -512,9 +517,10 @@ cproto — Generates C function prototypes (declarations)
 
 
 EDITORS:
-nano — /etc/nanorc > nano config
-    /usr/share/nano/LANGUAGE.nanorc > syntax highlights
-    alt + / or ? > go to last line
+nano — Simple text editor.
+    /etc/nanorc — Config file.
+    /usr/share/nano/LANGUAGE.nanorc — Syntax highlight files.
+    alt + / or ? — Go to last line.
 fte — Cool text editor with CUA (IBM)-shortcuts
 diakonos — Simple terminal text editor with ctrl-c for copy
 pyroom — Distraction free writing (gui)
@@ -563,13 +569,13 @@ ss -tupl — List internet services on a system
 
 WIRELESS:
 iwconfig — Sets the wireless configuration options basic to most wireless devices
-iwlist wlan0    <option> — Displays current status information of a device, more detailed then iwconfig
+iwlist wlan0 — <option> — Displays current status information of a device, more detailed then iwconfig
         scan (sudo) — List wireless networks in range 
 iwspy — Sets the list of IP addresses in a wireless network and checks the quality of their connections
 iwpriv — Accesses configuration options specific to a particular device
 rfkill  list — Show wireless adapters (wifi and bluetooth)
     block/unblock <dev-num> — Block/unblock wireless device
-iw dev wlan0    link — Show link status of wlan0
+iw dev wlan0 — link — Show link status of wlan0
         set biterates <standard> — Manually set interface speed
         scan (sudo) — List wireless networks in range 
 wavemon — Monitor wireless connection link quality
@@ -787,7 +793,7 @@ loadkeys <country-code> — Load key mapping
 showkey — Get keycodes of pressed keys
 setfont <font> — Set console font
     /usr/share/consolefonts/Uni2-VGA16.psf.gz — For example
-    /etc/default/console-setup contains the default settings 
+    /etc/default/console-setup — contains the default settings 
 jfbterm — Enable unicode characters in terminal
 echo -en "\e]PC7373C9" — Change blue color in tty (first numeral after P means slot, and others shade)
 
@@ -854,14 +860,14 @@ service — Allows you to start, stop or restart a service (it runs a script in 
 
 SYSTEM RUNLEVELS (RedHat/Debian):
 runlevel — Output previous and current runlevel
-0 — Shuts down the system
-1 — Administrative single-user mode
-2 — Same as 3 but without networking / multiuser with X server
-3 — Text mode state (ctrl+alt+F1) / User defined
-4 — User defined
-5 — X-window mode (ctrl+alt+F7) / User defined
-6 — Reboots
-S — Single user mode
+    0 — Shuts down the system
+    1 — Administrative single-user mode
+    2 — Same as 3 but without networking / multiuser with X server
+    3 — Text mode state (ctrl+alt+F1) / User defined
+    4 — User defined
+    5 — X-window mode (ctrl+alt+F7) / User defined
+    6 — Reboots
+    S — Single user mode
 
 
 ==========
@@ -990,14 +996,14 @@ PROC (various information about the system):
 /proc/net/wireless — Wireless connection info
 
 
-USR — "Unix System Resources":
+USR ("Unix System Resources"):
 /usr/lib/jvm — Java jres and jdks
 /usr/share/man — Man pages
 /usr/share/bash-completion — Bash completion functions
 
 
 SBIN — The "system-administrator's bin file":
-    Hosts programs that would be in /bin if they didn't have "root-only" access permissions.
+Hosts programs that would be in /bin if they didn't have "root-only" access permissions.
 
 
 VAR — "variable":
@@ -1018,11 +1024,12 @@ BOOT (kernels):
 ###########
 
 GIT MANTRA:
+```
 git init
 git add <file> OR git add .
 git status
 git commit -am "<commit-message>"
-
+```
 
 CLONE FROM GITHUB:
 git clone git@github.com:/<user>/<project> — Download repo (later you keep refreshing with 'git pull origin master') -> You need SSH key. If you don't want, use https://github.com/<user>/<repo> for address.
@@ -1036,6 +1043,7 @@ GENERATE SSH KEY:
 
 
 ADD TO GITHUB:
+```
 Create remote repository on website
 git remote add origin git@github.com:/<user>/<project>.git
 git pull origin master
@@ -1043,7 +1051,7 @@ git push origin master
 after your first push, you can simply type:
 git push
 sometimes also: git push --set-upstream origin master
-
+```
 
 REMOTE:
 git remote update — Get info about state of remote

@@ -11,7 +11,7 @@ DEBUG = False
 
 TEMP = 'template.html'
 TEMP_ANCHOR = '<!-- INSERT_HERE -->'
-BATCH_SEPARATOR = "<tr style='padding:3px'><td></td><td></td></tr>"
+BATCH_SEPARATOR = "<tr style='padding:3px'><td width=155px></td><td></td></tr>"
 SKIP_LINES = 14
 SEP = ' — '
 
@@ -21,22 +21,62 @@ SEP = ' — '
 #
 
 def main():
+    # Paragraph and code block do not contain ' — ' and begin at the start of
+    # line. Code block is bounded by '```'
     lines = [convert_specials(a) for a in read_file(sys.argv[1])]
     lines = lines[SKIP_LINES:]
     out = []
     table = []
+    code_block = []
+    in_code = False
+    paragraph = []
     lines = iter(lines)
     for line in lines:
+        if line.startswith('```'):
+            # print(f'code: {line}')
+            if paragraph:
+                out.append(get_paragraph(paragraph))
+                paragraph = []
+            if in_code:
+                out.append(get_code(code_block)) 
+                code_block = []               
+            in_code = not in_code
+            # print(f'in code: {in_code}')
+            continue
+        if in_code:
+            # print(f'code: {line}')
+            code_block.append(line)
+            continue
         title = get_title(line, lines)
         if title:
+            if paragraph:
+                out.append(get_paragraph(paragraph))
+                paragraph = []
             if table:
                 out.append(get_table(table))
                 table = []
             out.append(title)
             continue
+        in_paragraph = re.match('\S', line) and SEP not in line
+        if in_paragraph:
+            paragraph.append(line)
+            continue
         if re.search('\S+', line):
+            if paragraph:
+                out.append(get_paragraph(paragraph))
+                paragraph = []
             table.append(line)
     print(insert_in_template(out))
+
+
+def get_code(lines):
+    code = '\n'.join(lines)
+    return f'<code>{code}</code>'
+
+
+def get_paragraph(lines):
+    code = ''.join(lines)
+    return f'<p>{code}</p>'
 
 
 def get_title(line, lines):
@@ -48,7 +88,7 @@ def get_title(line, lines):
         title = next(lines).strip(': ')
         next(lines)
         return format_title(title, 2)
-    elif re.match('^[A-Z/]+:\s*$', line):
+    elif re.match('^[A-Z /]+:\s*$', line):
         title = line.strip(': ')
         return format_title(title, 3)
 
@@ -67,7 +107,7 @@ def get_table(lines):
     line_batches = get_line_batches(lines)
     line_batches = [parse_batch(a) for a in line_batches]
     out = BATCH_SEPARATOR.join(line_batches)
-    out = f'<table width=700><tbody>\n{out}\n</tbody></table>'
+    out = f'<table width=780><tbody>\n{out}\n</tbody></table>'
     return out
 
 
@@ -101,20 +141,19 @@ class Cmd:
         s.last = s.options[-1].desc
 
     def __repr__(s):
-        return str({'name': s.name, 'desc': s.desc, 'options': s.options})
+        return str({'name': s.name, 'desc': format_desc(s.desc), 
+                   'options': s.options})
 
     def __str__(s):
         out = []
         out.append(f'<tr><td valign="top"><strong><code>{s.name}</code>' \
                    f'</strong></td>')
         if s.desc:
-            # desc_str = ''.join(s.desc)
-            out.append(f'<td>{format_desc(s.desc)}</td></tr>\n')
+            out.append(f'<td valign="top">{format_desc(s.desc)}</td></tr>\n')
         options_str = []
         for opt in s.options:
-            # desc_str = ''.join(opt.desc)
-            options_str.append(f'<tr> <td><strong><code>{opt.name}</code>' \
-                               f'</strong></td><td>{format_desc(opt.desc)}</td>' \
+            options_str.append(f'<tr> <td width=170 valign="top"><strong><code>{opt.name}</code>' \
+                               f'</strong></td><td valign="top">{format_desc(opt.desc)}</td>' \
                                f'</tr>\n')
         if options_str:
             options = ''.join(options_str)
@@ -155,7 +194,7 @@ def parse_batch(lines):
     out = []
     cmd = None
     for line in lines:
-        new_command = re.match('\w', line)
+        new_command = re.match('\S', line)
         if not new_command:
             process_desc_or_opt(line, cmd)
             continue
@@ -173,10 +212,18 @@ def parse_batch(lines):
 
 def process_desc_or_opt(line, cmd):
     if SEP not in line:
-        cmd.append(line)
+        try:
+            cmd.append(line)
+        except AttributeError:
+            print('line is not str', line, file=sys.stderr)
+            sys.exit()
         return
     name, desc = line.split(SEP, 1)
-    cmd.add_option(name)
+    try:
+        cmd.add_option(name)
+    except AttributeError:
+        print('cmd is none', line, file=sys.stderr)
+        sys.exit()
     cmd.append(desc)
 
 
