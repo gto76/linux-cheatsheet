@@ -14,7 +14,7 @@ TEMP_ANCHOR = '<!-- INSERT_HERE -->'
 BATCH_SEPARATOR = "<tr style='padding:3px'><td width=155px></td><td></td></tr>"
 SKIP_LINES = 14
 SEP = ' — '
-TOP_PADDING = 10
+TOP_PADDING = 5
 
 
 ###
