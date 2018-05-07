@@ -152,7 +152,7 @@ GENERAL:
 =======
 
 su — Switches user.
-    - <username> — Switches to user.
+    - <user> — Switches to user.
     - — Switches to root.
 man — Help on commands.
     <section> — Section numbers: 1. Programs, 2. System calls, 3. Library calls,
@@ -236,8 +236,8 @@ find <dir> -name <file> — Search by name
     -inum <inum> — Find files with the inode number
     -type <f|...> — Find files of type
     -delete — Delete found files
-    -exec <command> {} \; — Find files and execute command for every found file. {} is replaced with filename
-    -exec <command> {} + — Find files and execute command with all filenames in place of {}
+    -exec <cmd> {} \; — Find files and execute command for every found file. {} is replaced with filename
+    -exec <cmd> {} + — Find files and execute command with all filenames in place of {}
     -atime +/-n — Find files that were last accessed less or more than n days.
 locate <word>  — Similar as find but using index
 updatedb (sudo) — Update database for locate 
@@ -349,7 +349,7 @@ set -o vi — Set line editing to vi mode
 pushd . — Put current dir on stack
 popd — Pop dir from stack
 cd - — go to last dir
-source <script> — Run script: for example source /etc/profile (same as . <command>)
+source <script> — Run script: for example source /etc/profile (same as . <cmd>)
 #!/bin/bash — Good practice to insert at beginning of a bash script
 export — PATH="$PATH:<dir>" — Adds new directory to path environment variable.
 read  — -p "Press [Enter] key to start backup..." — Prompt for user input
@@ -358,8 +358,8 @@ getopts — Parse parameters/arguments, builtin
 getopt — GNU version is even better then getopts, not a builtin
 while read line; do <commands>; done < <file> — Read from file line by line
     -r — Do not treat backslashes as escape characters
-complete -F <completion-function> <command> — Set completion function for command
-complete -p <command> — Print the completion function for command
+complete -F <completion-function> <cmd> — Set completion function for command
+complete -p <cmd> — Print the completion function for command
 compgen -c <pattern> — Print all completions for pattern
 help <builtin> — Display information about builtin command
 wait — Wait for all background processes to end
@@ -374,7 +374,7 @@ IFS=$'\n\t' — Remove space from the default Internal Field Separator
 
 HISTORY:
 sudo !! — Run the last command as root 
-␣<command> — Execute a command without saving it in the history
+␣<cmd> — Execute a command without saving it in the history
 !<term> — Last command that starts with term
 
 
@@ -661,15 +661,15 @@ init — Upstart init daemon job configuration
 telinit — Change system runlevel
 dmesg — Print the contents of your bootup (startup) messages displayed by the kernel. This is often useful when debugging problems
 getconf -a — Print all system configuration variables
-nohup <command> — Run a command immune to hangups, runs even after the shell is closed (writes output to nohup.out)
-nohup <command> &>/dev/null & — Run a command immune to hangups in background, do not save output
+nohup <cmd> — Run a command immune to hangups, runs even after the shell is closed (writes output to nohup.out)
+nohup <cmd> &>/dev/null & — Run a command immune to hangups in background, do not save output
 
 wmctrl — X Window Manager
 
 awesome — Tiled window manager
     -k — Check configuration script for errors
 
-busybox <command> — Combines tiny versions of many common UNIX utilities into a single small executable. (1.5 Mb)
+busybox <cmd> — Combines tiny versions of many common UNIX utilities into a single small executable. (1.5 Mb)
 mono — .NET support
 
 
@@ -733,7 +733,7 @@ free -tm — Displays memory statistics
 vmstat — Performance of system components / virtual memory statistics
 sar — System activity information
 iostat — Disk usage
-time <command> — Time a execution of a command
+time <cmd> — Time a execution of a command
 perf — Profiler
 
 
@@ -818,7 +818,7 @@ skill — Sends signals to command/user/tty or report process status
     -stop <user> — Stop all of the users processes
     -cont <user> — Continue all users processes
 nice — Sets the priority for a process (from max of -20 to min of 20)
-    -20 <command> — Execute command with maximum priority
+    -20 <cmd> — Execute command with maximum priority
 renice — Changes the priority of an existing process
     +20 <pid> — Change processes priority to lowest level
 snice — Works very similarly to skill
@@ -1459,7 +1459,7 @@ mkisofs -o ../your-new.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emu
 ```
 
 GDB:
-gdb <command> — Start gdb
+gdb <cmd> — Start gdb
 run <arguments>  — Start debugging
 run < <file> — Run with piped input
 up — Follow trace
@@ -1468,7 +1468,7 @@ print <variable> — Print variable
 
 COREDUMP:
 ulimit -c unlimited — Set core file limit to unlimited
-gdb <command> core — Debug core file with gdb
+gdb <cmd> core — Debug core file with gdb
 
 
 CHROME:
