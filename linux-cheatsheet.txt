@@ -183,7 +183,7 @@ bash — Run bash command interpreter (shell)
 
 gcc — Gnu c compiler
     -w — Supress warnings (only print errors) 
-    -a shows all sections
+    -a — Show all sections
 run-parts — Run all scripts or programs in a directory
 date — Tells you date and time, also can set
     -s <string> — Set date
@@ -225,8 +225,8 @@ ln — Makes links to the files
 df — Disc fullness / disc free
 du -s <dir> — Directory size
 mc — Midnight commander
-    alt o — Open parent dir in another panel
-    ctrl o — Switch to bash
+    Alt o — Open parent dir in another panel
+    Ctrl o — Switch to bash
 find <dir> -name <file> — Search by name
     -regex <regex> — Use regex for name search
     -not — Insert before other options to negate
@@ -239,7 +239,7 @@ find <dir> -name <file> — Search by name
     -exec <command> {} \; — Find files and execute command for every found file. {} is replaced with filename
     -exec <command> {} + — Find files and execute command with all filenames in place of {}
     -atime +/-n — Find files that were last accessed less or more than n days.
-locate <word>  — Same as find but using index
+locate <word>  — Similar as find but using index
 updatedb (sudo) — Update database for locate 
 locate -0 | xargs -0 — Uses NUL character as separator, necessary for filenames with spaces 
 md5sum — Checks md5 sum hash
@@ -321,20 +321,20 @@ $'\n' — String literal with escape sequences (there is a backslash before n)
 $? — Exit code of last command (0 - Success)
 Ctrl-Z, kill %% — Kill looping bash script
 
-test <expr> — Same as [ <expression> ], returns zero exit status if true.
-    -n — Is string non empty, 
-    -z — Is string empty, 
-    -a — And, 
-    -o — Or,
-    = — Strings are equal, 
-    -nt — File newer than, 
-    -ot — Older then,
-    -d — Directory exists, 
-    -e — File exists, 
-    -f — Is a regular file,
-    -h — Its a symbolic link, 
-    -r — Has read permission,
-    -w — Has write permission, 
+test <expr> — Same as `[ <expression> ]`. Returns zero exit status if true.
+    -n — Is string non empty
+    -z — Is string empty
+    -a — And
+    -o — Or
+    = — Strings are equal
+    -nt — File newer than
+    -ot — Older then
+    -d — Directory exists
+    -e — File exists
+    -f — Is a regular file
+    -h — Its a symbolic link
+    -r — Has read permission
+    -w — Has write permission
     -x — Has execute permission
 [[ <expr> ]] — Same as [, but without word splitting and filename expansion. And with additional operators: &&, ||, <, > (lexicographic less, more), and also regular expression matching.
 =~ — Regex comparison operator: [[ "$HOST" =~ ^user.* ]]
@@ -351,9 +351,9 @@ popd — Pop dir from stack
 cd - — go to last dir
 source <script> — Run script: for example source /etc/profile (same as . <command>)
 #!/bin/bash — Good practice to insert at beginning of a bash script
-export  PATH="$PATH:<dir>" — Add new directory to path variable
-read -p "Press [Enter] key to start backup..." — Prompt for user input
-var=${1:-"<default-value>"} — Setting variable with default value if $1 is empty
+export — PATH="$PATH:<dir>" — Adds new directory to path environment variable.
+read  — -p "Press [Enter] key to start backup..." — Prompt for user input
+var=${1:-"<default>"} — Setting variable with default value if $1 is empty
 getopts — Parse parameters/arguments, builtin
 getopt — GNU version is even better then getopts, not a builtin
 while read line; do <commands>; done < <file> — Read from file line by line
@@ -374,15 +374,15 @@ IFS=$'\n\t' — Remove space from the default Internal Field Separator
 
 HISTORY:
 sudo !! — Run the last command as root 
-<space>command — Execute a command without saving it in the history
+␣<command> — Execute a command without saving it in the history
 !<term> — Last command that starts with term
 
 
 REDIRECTIONS:
-<command> 2> /dev/null — Redirect error output
-<command> &> /dev/null — Redirect both standard and error output
-<command> >&2 — Write to stderr
-<command> 2>&1 | less — Add stderr to stdout and print it with less (useful for gcc)
+<cmd> 2> /dev/null — Redirect error output
+<cmd> &> /dev/null — Redirect both standard and error output
+<cmd> >&2 — Write to stderr
+<cmd> 2>&1 | less — Add stderr to stdout and print it with less (useful for gcc)
 
 
 ARRAYS AND LINES:
@@ -405,9 +405,9 @@ ALIASES AND FUNCTIONS:
 alias — Print all aliases
     <name> — Print alias
     <name>='cmd' — Set alias
-command <command> — Executes original command, bypassing any aliases or shell functions that may be defined for command
-\<command> — Temporarily disable alias (call original)
-type <command> — Will tell you what is command aliased to or if it is a biltin, function or a command
+command <cmd> — Executes original command, bypassing any aliases or shell functions that may be defined for command
+\<cmd> — Temporarily disable alias (call original)
+type <cmd> — Will tell you what is command aliased to or if it is a builtin, function or a command
     -P just check commands
 declare -F — Print function names
 declare -f — Print functions
@@ -418,20 +418,19 @@ TEXT:
 ====
 
 PRINT:
-head -n-<number-of-lines> — Print all lines but the last n
-    -c <num-of-char> — Print first c characters
-tail -n+<line-number> — Start at line number
+head — -n-<num_of_lines> — Print all lines but the last n
+    -c <num_of_char> — Print first c characters
+tail — -n+<line_num> — Start at line number
     -f — Do not stop printing (follow)
-cat -n — Number all lines
-    -nl — Similar
+cat — -n — Number all lines
     >> file — Simplest text editor (great for pasting)
 less    &<phrase> — Display only lines with
     -N — Show line numbers
-    -~ — Do not show ~ after EOF
+    -~ — Do not show `~` after `EOF`
     +G — Tells less to start at the end of the file
-                +F — Follow the input (to scroll up first press ctrl+c)
+    +F — Follow the input (to scroll up first press ctrl+c)
     -F — Or --quit-if-one-screen
-    v — Opens editor defined in $VISUAL or $EDITOR
+    v — Opens editor defined in `$VISUAL` or `$EDITOR`
     :n — Examine the next file
     <,> — Go to home, end
 wc — Count lines, words and characters
@@ -439,8 +438,8 @@ wc — Count lines, words and characters
 
 EDIT:
 sudo -e <file> — Edit file as sudo
-tr <from> <to> — Translate or delete characters (-d for delete)
-cut <filename> — Remove sections from each line of files
+tr <from> <to> — Translate or delete characters (`-d` for delete)
+cut <file> — Remove sections from each line of files
     -d ':' -f 1,7 /etc/passwd — Only show the username and the shell
 sort — Sorts lines
     -u — Uniq, deletes duplicates
@@ -450,23 +449,23 @@ uniq — Removes adjacent duplicates
     -d — Intersection
     -u — Difference
 column — Columnate text
-    t — Create a table
+    -t — Create a table
 shuf — Shuffle input lines
 tac — Concatenate and print files in reverse (reverse cat)
 join — Join lines of two files on a common field
 colrm <from <to>> — Removes columns
 seq <number> — Output numbers from 1 to number
-ispell/aspell — Interactive spell checker
-basename [-s .suffix] <path> — Strip directory from path
-    -s <.suffix> — Also strip suffix
+ispell, aspell — Interactive spell checker
+basename <path> — Strip directory from path
+    -s .<suffix> — Also strip suffix
     -a — Process multiple filenames
 dirname <path> — Strip last component from path
 fmt — Produce roughly uniform line lengths
 fold — Wrap each input line to fit in specified width
 paste — Glue two documents side by side
-sed 's///g' — Substitute every occurrence in line, not just the first one
+sed — 's///g' — Substitute every occurrence in line, not just the first one
     's///I' — Ignore case
-    -r — Extended syntax, for +, ?,... , also you shouldn't escape the parenthesis
+    -r — Extended syntax, for `+`, `?`, ... Also you shouldn't escape the parenthesis
     -r 's###e' — Execute match as a command
     -i <file> — Will make changes directly to the file (in place)
     -u — Unbuffered mode (processes input immediately)
@@ -477,8 +476,8 @@ expand — Convert tabs to spaces
 
 
 DIFF:
-diff -u <files> — Unified format
-diff --brief -r — Compare two directory trees
+diff — -u <files> — Unified format
+    --brief -r — Compare two directory trees
 colordiff — Version of diff with colors
 sdiff — Two files side by side
 comm — Compare two sorted files line by line
@@ -507,7 +506,7 @@ strings — Print all text parts of binary file
 
 
 CONVERT:
-todos/fromdos — Convert line endings form/to windows format (package tofrodos)
+todos, fromdos — Convert line endings form/to windows format (package tofrodos)
 enscript — Converts text files to postscript, rtf, HTML
 gs — Ghostscript: postscript and PDF language interpreter and previewer
 pdftohtml — Pdf to html
@@ -521,8 +520,8 @@ cproto — Generates C function prototypes (declarations)
 EDITORS:
 nano — Simple text editor.
     /etc/nanorc — Config file.
-    /usr/share/nano/LANGUAGE.nanorc — Syntax highlight files.
-    alt + / or ? — Go to last line.
+    /usr/share/nano/<lang>.nanorc — Syntax highlight files.
+    Alt + / or ? — Go to last line.
 fte — Cool text editor with CUA (IBM)-shortcuts
 diakonos — Simple terminal text editor with ctrl-c for copy
 pyroom — Distraction free writing (gui)
@@ -633,9 +632,9 @@ elinks — Another web browser (has menus)
 
 
 HACKING:
-nmap -sP 192.168.1.1-3 — Network scanning
+nmap — -sP 192.168.1.1-3 — Network scanning
     192.168.1.3 -p100-139 — Port scanning
-    -O 192.168.0.3 (sudo) — Scanning os 
+    -O 192.168.1.3 (sudo) — Scanning os 
 tcpdump (sudo) — Sniffer (show network traffic) 
     -l — Buffered output (for piping to less, etc...)
 ettercap — Multipurpose sniffer/interceptor/logger for switched LAN (can detect man in the middle, denial of service, DNS spoofing)
@@ -682,17 +681,17 @@ vipw — Edit password file
 vigr — Edit groups file
 umask —  the umask is a value set by the shell. It controls the default permissions of any file created
 usermod <user> — Modify user acount information
-    -l newname oldname
-    -c "new real name" username
+    -l newname oldname — 
+    -c "new real name" username — 
     -d /my/new/home username — Change location of the users home
     -m -d /my/new/home — Also move the files
 useradd <user> — Add user
 adduser <user> — More high level (use 'adduser <user> sudo' after to add user to sudo group)
     --system — Create system user (can not log in) 
-adduser <user> <group> — Add user to group (only takes effect after login!!!)
+    <group> — Add user to group (only takes effect after login!!!)
 groups <user> — What groups user belongs to
 userdel -r <user> — Remove user and his home dir
-deluser -remove-all-files <user> — More high level, removes also files outside home, cron jobs, itd
+deluser — -remove-all-files <user> — More high level, removes also files outside home, cron jobs, itd
 passwd <user> — Change password
 
 
@@ -704,22 +703,23 @@ parted — Partition manipulation program
     -l (sudo) — List partitions 
 fdisk — Manipulate disk partition table
     -l (sudo) — List partitions 
-disks — Nice gui partition tool
-mount — List all mounted devices (to get list of devices use fdisk -l)
+disks — Nice GUI partition tool
+mount — List all mounted devices (to get list of devices use `fdisk -l`)
     <device> <path> — For example mount /dev/hdc2 to /mymedia
 lsattr — List file attributes
 chattr — Change file attributes
 rkhunter -c — Checks if it can find any rootkits under the system
-ntfsundelete <HD name> (sudo) — Undelete files on ntfs partition 
+ntfsundelete — Undelete files on NTFS partition 
 
 
 LOGGING:
 last — When various users have logged in or out. This includes information on when the computer was rebooted.
-lastlog — Displays a list of users and what day/time they logged into the system
+lastlog — Displays a list of users and what day/time they logged into the 
+        system. To get all failed logins run:
+        `cat /var/log/auth.log | grep "failed password" -i`.
 rsyslogd —  manages all the logs on your system
     closelog, openlog, syslog, vsyslog -> library calls that send messages to the system logger
 logger — Makes entries in the system log
-cat /var/log/auth.log | grep "failed password" -i — Print all failed logins
 zeitgeist — Activity logger
 
 
