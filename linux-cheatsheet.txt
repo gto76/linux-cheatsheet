@@ -175,12 +175,12 @@ bc — Evaluates input. It's basicaly a calculator, but also porvides some contr
 
 
 sh — Run command interpreter (shell). Can run a script even if not executable.
-    -c '<commands>' — Start new non-interactive shell and read commands from arguments instead of stdin
+    -c '<commands>' — Start new non-interactive shell and read commands from arguments instead of stdin. To append lines to system configuration file run `sudo sh -c 'echo "bla bla bla" >> <file>'`.
 bash — Run bash command interpreter (shell)
     -c — Read commands from arguments instead of stdin
     -n <script> — Check script for errors
     -x — Outputs lines before execution, good for debugging
-sudo sh -c 'echo "bla bla bla" >> <file>' — Append lines to system configuration file (sudo write)
+
 gcc — Gnu c compiler
     -w — Supress warnings (only print errors) 
     -a shows all sections
@@ -188,7 +188,8 @@ run-parts — Run all scripts or programs in a directory
 date — Tells you date and time, also can set
     -s <string> — Set date
     +%T -s "10:13:13" — Set time
-timedatectl set-timezone CET — Sets timezone
+timedatectl — Control the system time and date.
+    set-timezone CET — Sets timezone
 cal — Calendar
 xclip — Copies to clipboard
 mkfifo <pipe> — Creates named pipe during that shell session.
@@ -222,7 +223,7 @@ cp -R — Copy recursively
 ln — Makes links to the files
     -s <file> <link> — Makes symbolic link. If you want to use relative paths you must be in links directory !!!!!!!!!!!!!!!!!!!!!!
 df — Disc fullness / disc free
-du -s <folder> — Folder size
+du -s <dir> — Directory size
 mc — Midnight commander
     alt o — Open parent dir in another panel
     ctrl o — Switch to bash
@@ -254,7 +255,8 @@ gpg <file> — Decrypt file with password
 mktemp — Create a temporary file or directory in /tmp and returns it's name.
 rename s/<from>/<to> <files> — Renames multiple files using sed syntax
 rsync — A fast, versatile, remote (and local) file-copying tool
-        -Hbaz -e ssh <src-dir> <usrnm>@<host>:<dest-dir> — Backs up the src-dircmp — Compares two files, similar to diff but also for binaries
+        -Hbaz -e ssh <src-dir> <user>@<host>:<dest-dir> — Backs up the `src-dir`.
+        cmp — Compares two files, similar to diff but also for binaries
 stat -c%X <file> — Time of last modification of the file 
 readlink -f — Follow link recursively and print files path
 xdg-open <file> — Open file with default application for the file type
@@ -263,19 +265,19 @@ watch — Execute command periodically
 
 
 ARCHIVES:
-tar xvzf <file>.tar.gz (.tgz) — Decompress and detar
+tar — xvzf <file>.tar.gz (.tgz) — Decompress and detar
     xvjf <file>.tar.bz2 — Decompress and detar
     -cf <archive>.tar <file>... — Compress
-zip -g <archive> <file> — Grow/add to existing archive
-unzip \*.zip — Backslash is necessary so that bash doesn't expand the * 
+zip — -g <archive> <file> — Add to existing archive (grow).
+unzip \*.zip — Backslash is necessary so that bash doesn't expand the `*`
     -d <dir> — Extract into directory (create if doesn't exist)
 unrar e — Extract files from rar archives
 zcat — Catz gziped file
 
 
 TERMINAL MULTIPLEXERS:
-screen — Switch between multiple virtual terminals (useful in ssh)
-    ctrl+a: 
+screen — Switch between multiple virtual terminals (useful in ssh). Prefix for
+    commands is `Ctrl a`.
     c — New terminal, 
     n — Next, 
     p — Previous, 
@@ -289,10 +291,10 @@ screen — Switch between multiple virtual terminals (useful in ssh)
     ] — Paste,
     k — Kill window,
     t — Show time and avg CPU load
-tmux — Terminal multiplexer, better screen. 
+tmux — Terminal multiplexer, better screen. Prefix for commands is `Ctrl b`. 
+    Most commands are the same as in `screen`.
     ls — Shows running sessions
     attach [-t <session no>] — Attach to running session
-    ctrl+b: 
     d — Detach from currently attached session  
     pgup — Enter in copy mode and pageup, 
     [ — Copy mode, 

@@ -29,27 +29,27 @@ def main():
     lines = lines[SKIP_LINES:]
     out = []
     table = []
-    code_block = []
+    code = []
     in_code = False
     paragraph = []
     lines = iter(lines)
     for line in lines:
         if line.startswith('```'):
-            check_par_and_table(out, paragraph, table)
+            check_par_and_table(out, paragraph, table, code)
             # if paragraph:
                 # out.append(get_paragraph(paragraph))
                 # paragraph = []
             # if in_code:
-                # out.append(get_code(code_block)) 
-                # code_block = []               
+                # out.append(get_code(code)) 
+                # code = []               
             in_code = not in_code
             continue
         if in_code:
-            code_block.append(line)
+            code.append(line)
             continue
         title = get_title(line, lines)
         if title:
-            check_par_and_table(out, paragraph, table)
+            check_par_and_table(out, paragraph, table, code)
             # if paragraph:
                 # out.append(get_paragraph(paragraph))
                 # paragraph = []
@@ -68,24 +68,27 @@ def main():
                 paragraph = []
             table.append(line)
             continue
-        check_par_and_table(out, paragraph, table)
+        check_par_and_table(out, paragraph, table, code)
 
     # if table:
         # out.append(get_table(table))
     # if paragraph:
         # out.append(get_paragraph(paragraph))
-    check_par_and_table(out, paragraph, table)
+    check_par_and_table(out, paragraph, table, code)
     out = parse_inline_code(out)
     print(insert_in_template(out))
 
 
-def check_par_and_table(out, paragraph, table):
+def check_par_and_table(out, paragraph, table, code):
     if paragraph:
         out.append(get_paragraph(paragraph))
         paragraph.clear()
     if table:
         out.append(get_table(table))
         table.clear()
+    if code:
+        out.append(get_code(code)) 
+        code.clear()
 
 
 def parse_inline_code(lines):
