@@ -164,6 +164,7 @@ echo — Prints passed text.
 xargs <cmd> — Passes output from one command to arguments of another.
     -t — Echoes the command before executing it. 
     -p — Echoes command and asks for confirmation before execution.
+    -0 — Input items are separated by null character instead of space.
 tee <file> — Sends output of a program to specified file and to standard output.
     /dev/tty — Sends output to terminal and to standard output
 expr — Evaluates passed expression.
@@ -215,51 +216,62 @@ ls  -d — List directory names instead of contents
     -t — Sort by time
     -1 — One file per line
     ./* — Ls one level deep
-    -i — Get inode number of file (file id). Use sudo find / -inum <number> to find all links that point to same file.
-rm -f — Force remove (do not prompt)
-mkdir -p — Make parents if needed
-cp -R — Copy recursively
-    --preserve — Copy and preserve mode, ownership and timestamps
+    -i — Get inode number of file (file id). Use `sudo find / -inum <number>` to find all links that point to same file.
+cp  -i — Interactive (Prompts before overwrite)
+    -v — Verbose (Explains what is being done)
+    -R — Copy directories recursively
+    -p — Preserve mode, ownership and timestamps
+    --preserve=all — Also preserves context, links and xattr
+rm  -i — Interactive (Prompts before every removal)
+    -v — Verbose (Explains what is being done)
+    -f — Force remove (does not prompt)
+    -R — Removes directories and their content recursively 
+mkdir  -p — Make parents if needed
 ln — Makes links to the files
     -s <file> <link> — Makes symbolic link. If you want to use relative paths you must be in links directory !!!!!!!!!!!!!!!!!!!!!!
-df — Disc fullness / disc free
-du -s <dir> — Directory size
+df  -h — Displays humanly readable free disk space
+du  -s <dir> — Directory size
 mc — Midnight commander
     Alt o — Open parent dir in another panel
     Ctrl o — Switch to bash
-find <dir> -name <file> — Search by name
+find <dir>  -name <file> — Search by name
     -regex <regex> — Use regex for name search
     -not — Insert before other options to negate
     -maxdepth <levels> — Descend only to levels deep
     -samefile <file> — Find all hard links of a file
     -xdev — Don't descend directories on other filesystems
     -inum <inum> — Find files with the inode number
-    -type <f|...> — Find files of type
+    -type <f|d|b|...> — Find files of type
     -delete — Delete found files
-    -exec <cmd> {} \; — Find files and execute command for every found file. {} is replaced with filename
-    -exec <cmd> {} + — Find files and execute command with all filenames in place of {}
+    -exec <cmd> {} \; — Find files and execute command for every found file. `{}` is replaced with filename
+    -exec <cmd> {} + — Find files and execute command with all filenames in place of `{}`
     -atime +/-n — Find files that were last accessed less or more than n days.
-locate <word>  — Similar as find but using index
-updatedb (sudo) — Update database for locate 
-locate -0 | xargs -0 — Uses NUL character as separator, necessary for filenames with spaces 
-md5sum — Checks md5 sum hash
+    -print0 | xargs -0 <cmd> — Sends found files to a command as parameters. Uses `NUL` character as separator, necessary for filenames with spaces 
+locate <regex>  — Similar as `find` but using index
+    -i — Ignore case
+    --regex — Interprets all patterens as extended regex
+    -0 | xargs -0 <cmd> — Sends found files to a command as parameters.
+updatedb (sudo) — Update locate index 
+md5sum — Prints md5 sum hash of a file
 read — Read single line from standard input 
   -n 1 — Print after reading one character
   -s — Do not echo input coming from terminal
 shred — Securely remove files
-file <file> — Determine file type
+file — Determine file's type
 tree — Ls in a tree-like (hierarchical) format
 install — Copy files and set attributes
-gpg <file> — Decrypt file with password
-    -c <file> — Encrypt
-mktemp — Create a temporary file or directory in /tmp and returns it's name.
-rename s/<from>/<to> <files> — Renames multiple files using sed syntax
+gpg — Decrypt file with password
+    -c — Encrypt
+mktemp — Create a temporary file or directory in `/tmp` and returns it's name.
+rename  s/<from>/<to> <files> — Renames multiple files using `sed` syntax
 rsync — A fast, versatile, remote (and local) file-copying tool
-        -Hbaz -e ssh <src-dir> <user>@<host>:<dest-dir> — Backs up the `src-dir`.
+        -Hbaz -e ssh — `<src-dir> <user>@<host>:<dest-dir>` - Backs up the 'src-dir':
+        `-H` preserves hard links, `-b` renames preexisting destination files (back up), `-a` preserve everything except hard links and `-z` compresses.
         cmp — Compares two files, similar to diff but also for binaries
-stat -c%X <file> — Time of last modification of the file 
-readlink -f — Follow link recursively and print files path
-xdg-open <file> — Open file with default application for the file type
+stat — Displays files status
+    -c%X — Time of last modification of the file 
+readlink  -f — Follow link recursively and print files path
+xdg-open — Open file with default application for the file type
 dialog — Display dialog box from shell script
 watch — Execute command periodically
 
@@ -321,7 +333,7 @@ $'\n' — String literal with escape sequences (there is a backslash before n)
 $? — Exit code of last command (0 - Success)
 Ctrl-Z, kill %% — Kill looping bash script
 
-test <expr> — Same as `[ <expression> ]`. Returns zero exit status if true.
+test <expr> — Same as `[ <expr> ]`. Returns zero exit status if true.
     -n — Is string non empty
     -z — Is string empty
     -a — And
@@ -336,8 +348,8 @@ test <expr> — Same as `[ <expression> ]`. Returns zero exit status if true.
     -r — Has read permission
     -w — Has write permission
     -x — Has execute permission
-[[ <expr> ]] — Same as [, but without word splitting and filename expansion. And with additional operators: &&, ||, <, > (lexicographic less, more), and also regular expression matching.
-=~ — Regex comparison operator: [[ "$HOST" =~ ^user.* ]]
+[[ <expr> ]] — Same as `[`, but without word splitting and filename expansion. And with additional operators: `&&`, `||`, `<`, `>` (lexicographic less, more), and also regular expression matching.
+=~ — Regex comparison operator: `[[ "$HOST" =~ ^user.* ]]`
 let <expr> — Executes expression: let a="$b"+2
 
 $(command) — Same as `command`
@@ -351,8 +363,8 @@ popd — Pop dir from stack
 cd - — go to last dir
 source <script> — Run script: for example source /etc/profile (same as . <cmd>)
 #!/bin/bash — Good practice to insert at beginning of a bash script
-export — PATH="$PATH:<dir>" — Adds new directory to path environment variable.
-read  — -p "Press [Enter] key to start backup..." — Prompt for user input
+export  PATH="$PATH:<dir>" — Adds new directory to path environment variable.
+read  -p <message> — Prompt for user input
 var=${1:-"<default>"} — Setting variable with default value if $1 is empty
 getopts — Parse parameters/arguments, builtin
 getopt — GNU version is even better then getopts, not a builtin
@@ -589,19 +601,21 @@ INTERNET:
 mutt — Mail client
 sftp — Secure ftp
 sshd — (openssh-server) ssh server deamon, on Windows service is named 'CYGWIN sshd'
+
 /etc/init.d/ssh restart (sudo) — Restart sshd (ssh deamon) 
 /usr/local/etc/init.d/openssh start (sudo) — Start openssh deamon 
 ssh-keygen -t rsa -C <email> — Generate rsa key pair, keys are stored in ~/.ssh
+
 ssh — SSH client
     <user>@<address> "mpg321 -" < <file>.mp3 — Stream audio over ssh
         enter ~. — Kill unresponsive session
-scp <local-file> <user>@<host>:~<remote-file> — Securely copy files over network
+scp — Securely copy files over network. Example: `scp <local-file> <user>@<host>:~<remote_file>`
 wget — Download files from WWW
     -O — Specify output file
     -c — Continue downloading unfinished file. Can also use wildcards, but use single quotes around url. 
     -r -l1 --no-parent -A.gif — Recursively to the depth of one ignoring references to the parent directory and all gifs.
-    curl — Similar
-    "-qO -" — Writes to standard output + quiet 
+curl — Similar
+    -qO - — Writes to standard output + quiet 
     -i — Urls specified by standard input
 transmissioncli — Torrent terminal client 
     -d — Download limit (kB/s)
@@ -662,10 +676,8 @@ telinit — Change system runlevel
 dmesg — Print the contents of your bootup (startup) messages displayed by the kernel. This is often useful when debugging problems
 getconf -a — Print all system configuration variables
 nohup <cmd> — Run a command immune to hangups, runs even after the shell is closed (writes output to nohup.out)
-nohup <cmd> &>/dev/null & — Run a command immune to hangups in background, do not save output
-
+    &>/dev/null & — Run a command immune to hangups in background, do not save output
 wmctrl — X Window Manager
-
 awesome — Tiled window manager
     -k — Check configuration script for errors
 
@@ -691,7 +703,7 @@ adduser <user> — More high level (use 'adduser <user> sudo' after to add user 
     <group> — Add user to group (only takes effect after login!!!)
 groups <user> — What groups user belongs to
 userdel -r <user> — Remove user and his home dir
-deluser — -remove-all-files <user> — More high level, removes also files outside home, cron jobs, itd
+deluser  -remove-all-files <user> — More high level, removes also files outside home, cron jobs, itd
 passwd <user> — Change password
 
 
@@ -742,8 +754,8 @@ auditd — System call auditing (package)
 ausearch — Querys the audit logs
 autrace — Traces a specific process
 auditctl — Controls the behavior of the auditd server
-strace <command and parameters> — Trace system calls and signals. All printed system calls can be looked up by man!
-    -s — Maximum string size we want printed (default is too short, 2000 is ok)
+strace <cmd> — Trace system calls and signals. All printed system calls can be looked up by `man`!
+    -s — Maximum string size we want printed (default is too short, 2000 is OK)
     -f — Also follow children
     -p <pid> — Attach to process
     -o <file> — Write output to file
@@ -764,9 +776,9 @@ lsusb [-tv] — Show usb info
 lscpu — Print CPU information
 dmidecode -q — Display bios/dmi information like ram size/type,
     max ram, computer model name, cpu information..
-smartctl -A /dev/sda — Show disk usage info
-hdparm -tT /dev/sda — Do a read speed test
-badblocks -s /dev/sda — Check for bad blocks
+smartctl  -A /dev/sda — Show disk usage info
+hdparm  -tT /dev/sda — Do a read speed test
+badblocks  -s /dev/sda — Check for bad blocks
 fstrim -v / — Discard unused blocks, useful for ssd-s
 sensors — (lm-sensors) hardware monitoring tool, temperature, fan speed
 pwmconfig — (fancontrol) set fan speed
@@ -965,8 +977,8 @@ SERVICES:
 /etc/init/, ~/.init/ — Init — Upstart init daemon job configuration
 /etc/init.d/ — Folder with service scripts, that get executed at start and end
 /etc/init.d/halt — Runs at the end 
-/etc/rc<level>.d — Startup scripts for different runlevels — Links to scripts in /etc/init.d — S85httpd -> S means startup, K is for stop. (To disable service just change S for K)
-/etc/rc.local — Last initialization file executed — Put your commands here
+/etc/rc<level>.d — Startup scripts for different runlevels - Links to scripts in /etc/init.d - S85httpd -> S means startup, K is for stop. (To disable service just change S for K)
+/etc/rc.local — Last initialization file executed - Put your commands here
 
 /etc/init/ssh.conf — Sshd config
 /etc/ssh/sshd_config — Sshd config

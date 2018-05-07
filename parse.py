@@ -181,7 +181,8 @@ class Cmd:
                    'options': s.options})
 
     def __str__(s):
-        top_padding_this = TOP_PADDING if s.options else SMALL_TOP_PADDING
+        big_pad = s.options and (len(s.options) > 1 or s.desc)
+        top_padding_this = TOP_PADDING if big_pad else SMALL_TOP_PADDING
         out = []
         out.append(f'<tr><td style="padding-right: 10px;padding-top: {top_padding_this}px" valign="top"><strong><code>{s.name}</code>' \
                    f'</strong></td>')
@@ -246,7 +247,13 @@ def parse_batch(lines):
         if cmd:
             out.append(cmd)
         tokens = line.split(SEP, 1)
-        cmd = Cmd(tokens[0])
+        name = tokens[0]
+        if '  ' in name:
+            name, option = name.split('  ', 1)
+            if len(tokens) < 2:
+                tokens.append('')
+            tokens[1] = f'{option} — {tokens[1]}'
+        cmd = Cmd(name)
         if len(tokens) > 1:
             process_desc_or_opt(tokens[1], cmd)
     if cmd:
