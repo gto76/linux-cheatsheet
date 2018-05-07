@@ -36,12 +36,6 @@ def main():
     for line in lines:
         if line.startswith('```'):
             check_par_and_table(out, paragraph, table, code)
-            # if paragraph:
-                # out.append(get_paragraph(paragraph))
-                # paragraph = []
-            # if in_code:
-                # out.append(get_code(code)) 
-                # code = []               
             in_code = not in_code
             continue
         if in_code:
@@ -50,12 +44,6 @@ def main():
         title = get_title(line, lines)
         if title:
             check_par_and_table(out, paragraph, table, code)
-            # if paragraph:
-                # out.append(get_paragraph(paragraph))
-                # paragraph = []
-            # if table:
-                # out.append(get_table(table))
-                # table = []
             out.append(title)
             continue
         in_paragraph = re.match('\S', line) and SEP not in line
@@ -70,10 +58,6 @@ def main():
             continue
         check_par_and_table(out, paragraph, table, code)
 
-    # if table:
-        # out.append(get_table(table))
-    # if paragraph:
-        # out.append(get_paragraph(paragraph))
     check_par_and_table(out, paragraph, table, code)
     out = parse_inline_code(out)
     print(insert_in_template(out))

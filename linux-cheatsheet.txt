@@ -265,7 +265,7 @@ gpg — Decrypt file with password
 mktemp — Create a temporary file or directory in `/tmp` and returns it's name.
 rename  s/<from>/<to> <files> — Renames multiple files using `sed` syntax
 rsync — A fast, versatile, remote (and local) file-copying tool
-        -Hbaz -e ssh — `<src-dir> <user>@<host>:<dest-dir>` - Backs up the 'src-dir':
+        -Hbaz -e ssh — `<src_dir> <user>@<host>:<dest_dir>` - Backs up the 'src-dir':
         `-H` preserves hard links, `-b` renames preexisting destination files (back up), `-a` preserve everything except hard links and `-z` compresses.
         cmp — Compares two files, similar to diff but also for binaries
 stat — Displays files status
@@ -277,19 +277,21 @@ watch — Execute command periodically
 
 
 ARCHIVES:
+dtrx  <archive> — Universal archive extractor
 tar — xvzf <file>.tar.gz (.tgz) — Decompress and detar
     xvjf <file>.tar.bz2 — Decompress and detar
-    -cf <archive>.tar <file>... — Compress
-zip — -g <archive> <file> — Add to existing archive (grow).
-unzip \*.zip — Backslash is necessary so that bash doesn't expand the `*`
+    -cf <archive>.tar <files> — Compress
+unzip  \*.zip — Backslash is necessary so that bash doesn't expand the `*`
     -d <dir> — Extract into directory (create if doesn't exist)
-unrar e — Extract files from rar archives
-zcat — Catz gziped file
+zip  -r <archive> <dir> — Compress whole directory recursively.
+    -g <archive> <files> — Add files to existing archive (grow).
+unrar  e — Extract files from rar archive
+zcat — Cats gziped file
 
 
 TERMINAL MULTIPLEXERS:
 screen — Switch between multiple virtual terminals (useful in ssh). Prefix for
-    commands is `Ctrl a`.
+    a command is `Ctrl a`.
     c — New terminal, 
     n — Next, 
     p — Previous, 
@@ -303,10 +305,10 @@ screen — Switch between multiple virtual terminals (useful in ssh). Prefix for
     ] — Paste,
     k — Kill window,
     t — Show time and avg CPU load
-tmux — Terminal multiplexer, better screen. Prefix for commands is `Ctrl b`. 
+tmux — Terminal multiplexer, better screen. Prefix for a command is `Ctrl b`. 
     Most commands are the same as in `screen`.
     ls — Shows running sessions
-    attach [-t <session no>] — Attach to running session
+    attach [-t <no>] — Attach to running session
     d — Detach from currently attached session  
     pgup — Enter in copy mode and pageup, 
     [ — Copy mode, 
@@ -320,7 +322,7 @@ BASH:
 ====
 
 "$x" — ALWAYS PUT DOUBLE QUOTES AROUND VARIABLE!!!!!!!!!!!!!!! 
-       All variables in bash are global !!!!!!!
+       All variables in bash are global!!!!!!!
 "$*" — Combines all the arguments into single word, separating them with first character of IFS variable. If IFS is not set, space is used. If IFS is null, no separator is used!!!!!!!!! No args provided will result in one empty string being passed on!!! 
 "$@" — Use this instead!!!!! Will retain arguments as-is, so no args provided will result in no args being passed on. This is in most cases what you want to use for passing on arguments.
     Google: "$@" is right almost everytime, and $* is wrong almost everytime.
@@ -370,7 +372,7 @@ getopts — Parse parameters/arguments, builtin
 getopt — GNU version is even better then getopts, not a builtin
 while read line; do <commands>; done < <file> — Read from file line by line
     -r — Do not treat backslashes as escape characters
-complete -F <completion-function> <cmd> — Set completion function for command
+complete -F <completion_function> <cmd> — Set completion function for command
 complete -p <cmd> — Print the completion function for command
 compgen -c <pattern> — Print all completions for pattern
 help <builtin> — Display information about builtin command
@@ -387,12 +389,12 @@ IFS=$'\n\t' — Remove space from the default Internal Field Separator
 HISTORY:
 sudo !! — Run the last command as root 
 ␣<cmd> — Execute a command without saving it in the history
-!<term> — Last command that starts with term
+!<cmd> — Run last command that starts with cmd
 
 
 REDIRECTIONS:
-<cmd> 2> /dev/null — Redirect error output
-<cmd> &> /dev/null — Redirect both standard and error output
+<cmd> 2> /dev/null — Redirect error output to `null`
+<cmd> &> /dev/null — Redirect both standard and error output to `null`
 <cmd> >&2 — Write to stderr
 <cmd> 2>&1 | less — Add stderr to stdout and print it with less (useful for gcc)
 
@@ -431,12 +433,12 @@ TEXT:
 
 PRINT:
 head — -n-<num_of_lines> — Print all lines but the last n
-    -c <num_of_char> — Print first c characters
+    -c <num_of_chars> — Print first c characters
 tail — -n+<line_num> — Start at line number
     -f — Do not stop printing (follow)
 cat — -n — Number all lines
     >> file — Simplest text editor (great for pasting)
-less    &<phrase> — Display only lines with
+less  &<patt> — Display only lines with pattern
     -N — Show line numbers
     -~ — Do not show `~` after `EOF`
     +G — Tells less to start at the end of the file
@@ -444,17 +446,17 @@ less    &<phrase> — Display only lines with
     -F — Or --quit-if-one-screen
     v — Opens editor defined in `$VISUAL` or `$EDITOR`
     :n — Examine the next file
-    <,> — Go to home, end
+    <, > — Go to home, end
 wc — Count lines, words and characters
 
 
 EDIT:
 sudo -e <file> — Edit file as sudo
 tr <from> <to> — Translate or delete characters (`-d` for delete)
-cut <file> — Remove sections from each line of files
+cut <file> — Removes columns from each line of files
     -d ':' -f 1,7 /etc/passwd — Only show the username and the shell
 sort — Sorts lines
-    -u — Uniq, deletes duplicates
+    -u — Uniq, removes duplicates
     -t — Set delimiter for fields (default is space)
     -k — Select by which field to sort 
 uniq — Removes adjacent duplicates
@@ -463,12 +465,12 @@ uniq — Removes adjacent duplicates
 column — Columnate text
     -t — Create a table
 shuf — Shuffle input lines
-tac — Concatenate and print files in reverse (reverse cat)
+tac — Concatenate and print files in reverse (reverse `cat`)
 join — Join lines of two files on a common field
-colrm <from <to>> — Removes columns
+colrm  [from [to]] — Removes columns
 seq <number> — Output numbers from 1 to number
 ispell, aspell — Interactive spell checker
-basename <path> — Strip directory from path
+basename <path> — Strips directory from path
     -s .<suffix> — Also strip suffix
     -a — Process multiple filenames
 dirname <path> — Strip last component from path
@@ -495,7 +497,7 @@ sdiff — Two files side by side
 comm — Compare two sorted files line by line
 patch — Apply a diff file to original
     patch < patch.diff — Apply patch
-    diff -u <old-file> <new-file> > patch.diff — Create patch
+    diff -u <old_file> <new_file> > patch.diff — Create patch
 
 
 SEARCH:
@@ -587,7 +589,7 @@ iwlist wlan0 — <option> — Displays current status information of a device, m
 iwspy — Sets the list of IP addresses in a wireless network and checks the quality of their connections
 iwpriv — Accesses configuration options specific to a particular device
 rfkill  list — Show wireless adapters (wifi and bluetooth)
-    block/unblock <dev-num> — Block/unblock wireless device
+    block/unblock <dev_num> — Block/unblock wireless device
 iw dev wlan0 — link — Show link status of wlan0
         set biterates <standard> — Manually set interface speed
         scan (sudo) — List wireless networks in range 
@@ -609,7 +611,7 @@ ssh-keygen -t rsa -C <email> — Generate rsa key pair, keys are stored in ~/.ss
 ssh — SSH client
     <user>@<address> "mpg321 -" < <file>.mp3 — Stream audio over ssh
         enter ~. — Kill unresponsive session
-scp — Securely copy files over network. Example: `scp <local-file> <user>@<host>:~<remote_file>`
+scp — Securely copy files over network. Example: `scp <local_file> <user>@<host>:~<remote_file>`
 wget — Download files from WWW
     -O — Specify output file
     -c — Continue downloading unfinished file. Can also use wildcards, but use single quotes around url. 
@@ -803,7 +805,7 @@ xset — User preference utility for X
     -r — Turn key autorepeat off 
     r — Turn key autorepeat on
 X NOT NECESSARY:
-loadkeys <country-code> — Load key mapping 
+loadkeys <country_code> — Load key mapping 
 showkey — Get keycodes of pressed keys
 setfont <font> — Set console font
     /usr/share/consolefonts/Uni2-VGA16.psf.gz — For example
@@ -841,8 +843,8 @@ pmap — Report memory map of a process (mapped file)
 JOBS:
 ctrl-z — Put job into background
 jobs — Prints currently running job
-bg <job-number> — Put job in background
-fg <job-number> — Bring job to the foreground
+bg <job_number> — Put job in background
+fg <job_number> — Bring job to the foreground
 %n — Job number n
 %s — Job whose command line starts with s
 %% — Current job
@@ -911,7 +913,7 @@ traverso — Simple daw
 BITMAP:
 display — Displays an image
 montage — Creates a montage from images
-    <input-file/s> -set label '%t' <output-file/s> — Labels images
+    <input_file/s> -set label '%t' <output_file/s> — Labels images
 convert <old> <new> — Converts file format (imagemagick)
 import — Captures screen-shots from the X server
 mogrify — Edit image
@@ -924,8 +926,8 @@ gnuplot — Interactive plotter: plot [-10:10] sin(x)
 fbi — Display images inside tty
 
 VIDEO:
-ffmpeg -i <file-in> <file-out> — Video and audio format converter. Has been replaced by avconv
-avconv -i <file-in> <file-out> — Video and audio format converter (libav-tools)
+ffmpeg -i <file_in> <file_out> — Video and audio format converter. Has been replaced by avconv
+avconv -i <file_in> <file_out> — Video and audio format converter (libav-tools)
 
 openshot — Gui movie editor 
 openmovieeditor — Gui movie editor 
@@ -1047,7 +1049,7 @@ GIT MANTRA:
 git init
 git add <file> OR git add .
 git status
-git commit -am "<commit-message>"
+git commit -am "<commit_message>"
 ```
 
 CLONE FROM GITHUB:
@@ -1367,7 +1369,7 @@ appletviewer <page>.html — Run Java applet
 jps -lvm — List java processes
 jmap -histo:live <pid> — Memory map
 jvisualvm — Profiler
-jar cvfe "bla.jar" <main-class> *.class — Create executable jar
+jar cvfe "bla.jar" <main_class> *.class — Create executable jar
 jar xf <jar> — Extract files from jar
 jar tf <jar> — Print contents of a jar 
 
@@ -1406,7 +1408,7 @@ xrandr  --output VGA1 --primary — Changes primary screen
 MOUNT ISO:
 ```
 sudo mkdir /media/x
-sudo mount -o loop <path-to-iso> /media/x
+sudo mount -o loop <path_to_iso> /media/x
 ```
 
 ECLIPSE:
@@ -1428,7 +1430,7 @@ regedit — Registry editor
 CYGWIN:
 [cygwin] ssh-host-cofig —  
 [command prompt] net start sshd — 
-[any] ssh <windows username - CASE MATTERS!>@<host> — Run sshd (use windows password)
+[any] ssh <windows_username - CASE MATTERS!>@<host> — Run sshd (use windows password)
 
 
 GOLANG:

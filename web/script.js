@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // d3.selectAll("code").each(function() { hljs.highlightBlock(this); });
   // parseMd()
 });
 
