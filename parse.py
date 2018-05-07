@@ -14,6 +14,7 @@ TEMP_ANCHOR = '<!-- INSERT_HERE -->'
 BATCH_SEPARATOR = "<tr style='padding:3px'><td width=155px></td><td></td></tr>"
 SKIP_LINES = 14
 SEP = ' — '
+TOP_PADDING = 10
 
 
 ###
@@ -33,28 +34,27 @@ def main():
     lines = iter(lines)
     for line in lines:
         if line.startswith('```'):
-            # print(f'code: {line}')
-            if paragraph:
-                out.append(get_paragraph(paragraph))
-                paragraph = []
-            if in_code:
-                out.append(get_code(code_block)) 
-                code_block = []               
+            check_par_and_table(out, paragraph, table)
+            # if paragraph:
+                # out.append(get_paragraph(paragraph))
+                # paragraph = []
+            # if in_code:
+                # out.append(get_code(code_block)) 
+                # code_block = []               
             in_code = not in_code
-            # print(f'in code: {in_code}')
             continue
         if in_code:
-            # print(f'code: {line}')
             code_block.append(line)
             continue
         title = get_title(line, lines)
         if title:
-            if paragraph:
-                out.append(get_paragraph(paragraph))
-                paragraph = []
-            if table:
-                out.append(get_table(table))
-                table = []
+            check_par_and_table(out, paragraph, table)
+            # if paragraph:
+                # out.append(get_paragraph(paragraph))
+                # paragraph = []
+            # if table:
+                # out.append(get_table(table))
+                # table = []
             out.append(title)
             continue
         in_paragraph = re.match('\S', line) and SEP not in line
@@ -66,12 +66,25 @@ def main():
                 out.append(get_paragraph(paragraph))
                 paragraph = []
             table.append(line)
-    if table:
-        out.append(get_table(table))
-    if paragraph:
-        out.append(get_paragraph(paragraph))
+            continue
+        check_par_and_table(out, paragraph, table)
+
+    # if table:
+        # out.append(get_table(table))
+    # if paragraph:
+        # out.append(get_paragraph(paragraph))
+    check_par_and_table(out, paragraph, table)
     out = parse_inline_code(out)
     print(insert_in_template(out))
+
+
+def check_par_and_table(out, paragraph, table):
+    if paragraph:
+        out.append(get_paragraph(paragraph))
+        paragraph.clear()
+    if table:
+        out.append(get_table(table))
+        table.clear()
 
 
 def parse_inline_code(lines):
@@ -89,6 +102,7 @@ def get_paragraph(lines):
 
 
 first_h1 = True
+
 def get_title(line, lines):
     if line.startswith('####'):
         global first_h1
@@ -124,7 +138,8 @@ def get_table(lines):
     line_batches = get_line_batches(lines)
     line_batches = [parse_batch(a) for a in line_batches]
     out = BATCH_SEPARATOR.join(line_batches)
-    out = f'<table width=780><tbody>\n{out}\n</tbody></table>'
+    # out = ''.join(line_batches)
+    out = f'<table width=780><tbody>\n{out}\n</tbody></table><br>'
     return out
 
 
@@ -163,15 +178,19 @@ class Cmd:
 
     def __str__(s):
         out = []
-        out.append(f'<tr><td style="padding-right: 10px;" valign="top"><strong><code>{s.name}</code>' \
+        out.append(f'<tr><td style="padding-right: 10px;padding-top: {TOP_PADDING}px" valign="top"><strong><code>{s.name}</code>' \
                    f'</strong></td>')
         if s.desc:
-            out.append(f'<td valign="top">{format_desc(s.desc)}</td></tr>\n')
+            out.append(f'<td style="padding-top: 10px" valign="top">{format_desc(s.desc)}</td></tr>\n')
         options_str = []
-        for opt in s.options:
-            options_str.append(f'<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;" valign="top"><strong><code>{opt.name}</code>' \
-                               f'</strong></td><td valign="top">{format_desc(opt.desc)}</td>' \
+        top_padding = 0
+        for i, opt in enumerate(s.options):
+            if not s.desc and i == 0:
+                top_padding = TOP_PADDING
+            options_str.append(f'<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:{top_padding}px" valign="top"><strong><code>{opt.name}</code>' \
+                               f'</strong></td><td style="padding-top:{top_padding}px" valign="top">{format_desc(opt.desc)}</td>' \
                                f'</tr>\n')
+            top_padding = 0
         if options_str:
             options = ''.join(options_str)
             if s.desc:

@@ -485,7 +485,7 @@ patch — Apply a diff file to original
 
 
 SEARCH:
-grep -v — Inverse
+grep — -v — Inverse
     -n — Line numbers 
     -w — Whole word 
     -A<x> | -B<x> — X lines after or before
