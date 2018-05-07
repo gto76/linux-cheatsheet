@@ -9,7 +9,7 @@ import re
 
 DEBUG = False
 
-TEMP = 'template.html'
+TEMP = 'web/template.html'
 TEMP_ANCHOR = '<!-- INSERT_HERE -->'
 BATCH_SEPARATOR = "<tr style='padding:3px'><td width=155px></td><td></td></tr>"
 SKIP_LINES = 14
