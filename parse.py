@@ -14,7 +14,8 @@ TEMP_ANCHOR = '<!-- INSERT_HERE -->'
 BATCH_SEPARATOR = "<tr style='padding:3px'><td width=155px></td><td></td></tr>"
 SKIP_LINES = 14
 SEP = ' — '
-TOP_PADDING = 5
+TOP_PADDING = 7
+SMALL_TOP_PADDING = 1
 
 
 ###
@@ -88,7 +89,7 @@ def check_par_and_table(out, paragraph, table):
 
 
 def parse_inline_code(lines):
-    return [re.sub('`(.*?)`', '<code>\\1</code>', a) for a in lines]
+    return [re.sub('`(.*?)`', '\'<code>\\1</code>\'', a) for a in lines]
 
 
 def get_code(lines):
@@ -177,16 +178,17 @@ class Cmd:
                    'options': s.options})
 
     def __str__(s):
+        top_padding_this = TOP_PADDING if s.options else SMALL_TOP_PADDING
         out = []
-        out.append(f'<tr><td style="padding-right: 10px;padding-top: {TOP_PADDING}px" valign="top"><strong><code>{s.name}</code>' \
+        out.append(f'<tr><td style="padding-right: 10px;padding-top: {top_padding_this}px" valign="top"><strong><code>{s.name}</code>' \
                    f'</strong></td>')
         if s.desc:
-            out.append(f'<td style="padding-top: 10px" valign="top">{format_desc(s.desc)}</td></tr>\n')
+            out.append(f'<td style="padding-top: {top_padding_this}px" valign="top">{format_desc(s.desc)}</td></tr>\n')
         options_str = []
         top_padding = 0
         for i, opt in enumerate(s.options):
             if not s.desc and i == 0:
-                top_padding = TOP_PADDING
+                top_padding = top_padding_this
             options_str.append(f'<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:{top_padding}px" valign="top"><strong><code>{opt.name}</code>' \
                                f'</strong></td><td style="padding-top:{top_padding}px" valign="top">{format_desc(opt.desc)}</td>' \
                                f'</tr>\n')

@@ -18,62 +18,62 @@
 ## GNOME ##
 ###########
 
-ctrl+alt+t — Terminal
-ctrl+alt+f — Firefox
-ctrl+alt+h — Home
-ctrl+alt+g — Gedit
-alt+F12 — Run command
+Ctrl+Alt T — Terminal
+Ctrl+Alt F — Firefox
+Ctrl+Alt H — Home
+Ctrl+Alt G — Gedit
+Alt F12 — Run command
  
-alt+F1 — Minimize window
-alt+F2 — Toggle maximize window
-alt+F3 — Toggle full screen
-ctrl+alt+d — Minimize all windows
+Alt F1 — Minimize window
+Alt F2 — Toggle maximize window
+Alt F3 — Toggle full screen
+Ctrl+Alt D — Minimize all windows
 
-ctrl+alt+<F1 to F6> — Terminals
-ctrl+alt+<F7 to F12> — Xwindows
-ctrl+alt+backspace — Restart X
-ctrl+alt+del — Log out
-ctrl+alt+end — Shutdown
-super+pgUp/pgDn — Switch workspace
-middle mouse button — Paste selected text
+Ctrl+Alt F1-F6 — Terminals
+Ctrl+Alt F7-F12 — Xwindows
+Ctrl+Alt Bksp — Restart X
+Ctrl+Alt Del — Log out
+Ctrl+Alt End — Shutdown
+Super PgUp/PgDn — Switch workspace
+Middle mouse button — Paste selected text
 
 
 NAUTILUS/NEMO:
-ctrl+l — Location, show path
-ctrl+shift+n — New folder
-ctrl+h — Show hidden files
+Ctrl L — Location, show path
+Ctrl+Shift N — New folder
+Ctrl H — Show hidden files
 
 
 GEDIT:
-ctrl+g — Find next instance of the string.
-ctrl+shift+g — Find previous instance of the string. 
-ctrl+shift+k — Clear highlights.
+Ctrl G — Find next
+Ctrl+Shift G — Find previous
+Ctrl+Shift K — Clear highlights
 
 
 TERMINAL:
-ctrl+shift+c — Copy
-ctrl+shift+v — Paste
-shift+ctrl+t — New tab   
-shift+ctrl+w — Close tab     
-ctrl PgUp/PgDn — Switch tabs
-ctrl +/- — Zoom
-ctrl+d — Close terminal
-ctrl+s — Scroll lock
+Ctrl+Shift C — Copy
+Ctrl+Shift V — Paste
+Ctrl+Shift T — New tab   
+Ctrl+Shift W — Close tab     
+Ctrl PgUp/PgDn — Switch tab
+Ctrl +/- — Zoom
+Ctrl D — Close terminal
+Ctrl S — Scroll lock
 
 
 BASH:
 Keys when in emacs mode. You can switch to vi mode with `set -o vi` command.
-ctrl+c — Interrupt, erase line
-ctrl+a — Go to beginning of line
-ctrl+e — End of line
-ctrl+u — Copy line
-ctrl+y — Paste line
-alt+. — Last argument
-ctrl+r — Search trough history
-alt+* — Show all matches for regular expression
-ctrl+alt+e — Show current line passed through alias, history and shell expansion
-ctrl+x, ctrl+e — Edit command in editor
-ctrl+p — Show last command (same as up arrow)
+Ctrl C — Interrupt, erase line
+Ctrl A — Go to beginning of line
+Ctrl E — End of line
+Ctrl U — Copy line
+Ctrl Y — Paste line
+Alt . — Last argument
+Ctrl R — Search trough history
+Alt * — Show all matches for regular expression
+Ctrl+Alt E — Show current line passed through alias, history and shell expansion
+Ctrl X, Ctrl E — Edit command in editor
+Ctrl P — Show last command (same as up arrow)
 
 
 
@@ -122,6 +122,7 @@ aptitude — Enables package browsing (skin for apt-get).
     search '~i!~M' — Lists installed packages that were not installed as a 
             dependency, with short description of each.
     search <package> — Package search.
+
 winetricks — Installs wine applications.
 update-alternatives — Maintains symbolic links determining default commands.
 unattended-upgrade — Automatic installation of security upgrades.
