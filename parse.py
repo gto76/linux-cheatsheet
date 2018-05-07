@@ -66,35 +66,52 @@ def main():
                 out.append(get_paragraph(paragraph))
                 paragraph = []
             table.append(line)
+    if table:
+        out.append(get_table(table))
+    if paragraph:
+        out.append(get_paragraph(paragraph))
+    out = parse_inline_code(out)
     print(insert_in_template(out))
+
+
+def parse_inline_code(lines):
+    return [re.sub('`(.*?)`', '<code>\\1</code>', a) for a in lines]
 
 
 def get_code(lines):
     code = '\n'.join(lines)
-    return f'<code>{code}</code>'
+    return f'<pre><code>{code}</code></pre>'
 
 
 def get_paragraph(lines):
-    code = ''.join(lines)
+    code = ' '.join(lines)
     return f'<p>{code}</p>'
 
 
+first_h1 = True
 def get_title(line, lines):
     if line.startswith('####'):
+        global first_h1
         title = next(lines).strip('# ')
         next(lines)
-        return format_title(title, 1)
+        pre = '\n<p><br><p>\n'
+        if first_h1:
+            pre = ''
+            first_h1 = False
+        return pre + format_title(title, 1)
     elif line.startswith('===='):
         title = next(lines).strip(': ')
         next(lines)
-        return format_title(title, 2)
-    elif re.match('^[A-Z /]+:\s*$', line):
+        link_id = title.replace(' ', '_').lower()
+        link = f'<a href="#{link_id}" name="{link_id}">#</a>'
+        return format_title(title, 2, a=link)
+    elif re.match('^[A-Z\(\) /]+:\s*$', line):
         title = line.strip(': ')
         return format_title(title, 3)
 
 
-def format_title(text, a_size):
-    return f'<h{a_size}>{text.title()}</h{a_size}>'
+def format_title(text, a_size, a=''):
+    return f'<h{a_size}>{text.title()}{a}</h{a_size}>'
 
 
 ###
@@ -146,19 +163,23 @@ class Cmd:
 
     def __str__(s):
         out = []
-        out.append(f'<tr><td valign="top"><strong><code>{s.name}</code>' \
+        out.append(f'<tr><td style="padding-right: 10px;" valign="top"><strong><code>{s.name}</code>' \
                    f'</strong></td>')
         if s.desc:
             out.append(f'<td valign="top">{format_desc(s.desc)}</td></tr>\n')
         options_str = []
         for opt in s.options:
-            options_str.append(f'<tr> <td width=170 valign="top"><strong><code>{opt.name}</code>' \
+            options_str.append(f'<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;" valign="top"><strong><code>{opt.name}</code>' \
                                f'</strong></td><td valign="top">{format_desc(opt.desc)}</td>' \
                                f'</tr>\n')
         if options_str:
             options = ''.join(options_str)
-            out.append(f'<tr> <td></td> <td><table>\n{options}\n' \
-                       f'</table> </td> </tr>\n')
+            if s.desc:
+                out.append(f'<tr> <td></td> <td><table>\n{options}\n' \
+                           f'</table> </td> </tr>\n')
+            else:
+                out.append(f'<td><table>\n{options}\n' \
+                           f'</table> </td> </tr>\n')
         return ''.join(out)
 
 

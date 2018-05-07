@@ -35,7 +35,6 @@ ctrl+alt+backspace — Restart X
 ctrl+alt+del — Log out
 ctrl+alt+end — Shutdown
 super+pgUp/pgDn — Switch workspace
-
 middle mouse button — Paste selected text
 
 
@@ -168,10 +167,10 @@ tee <file> — Sends output of a program to specified file and to standard outpu
     /dev/tty — Sends output to terminal and to standard output
 expr — Evaluates passed expression.
     1 + 1 — Prints `2`.
-bc — Evaluates input. It's basicaly a calculator, but porvides also some control
+bc — Evaluates input. It's basicaly a calculator, but also porvides some control
         sentences.
-    echo 1 + 1 | bc — Prints `2`.
-    echo "scale=5;3/4" | bc - Prints `.75000`.
+    echo 1 + 1 | bc — Prints '`2`'.
+    echo "scale=5;3/4" | bc — Prints '`.75000`'.
 
 
 sh — Run command interpreter (shell). Can run script even if not executable.
@@ -204,7 +203,7 @@ shutdown — Closes down the system at a given time.
     -r now — Reboot, same as `reboot`.
 make — Utility that maintains groups of programs.
     -q — Doesn't run any commands, just returns `0` exit code if everything is
-            up to date or nonzero otherwise.
+            up to date or non-zero otherwise.
     -B — Unconditionally makes all targets.
 
 
@@ -364,7 +363,7 @@ wait — Wait for all background processes to end
 
 
 SAFETY:
-set -e — Exit if any command fails
+set — -e — Exit if any command fails
     -u — Exit if referencing undefined variable
     -o pipefail — If any command in a pipeline fails, its return code is used as the return code of the whole pipeline
 IFS=$'\n\t' — Remove space from the default Internal Field Separator
@@ -393,7 +392,7 @@ done <<< "$list" —
 
 ${a[1]} — Value of the second element of the array
 for c in ${a[@]} — Iterate over array
-${varname:offset:length} — Get substring: s="aeiou"; ${s:3:1} -> o
+${varname:offset:length} — Get substring: `s="aeiou"; ${s:3:1} -> o`
 ${#var} — Length of a var 
 ${#name[subscript]} — Length  of the element
 ${#name[@]} — Length  of the array
@@ -858,7 +857,7 @@ service — Allows you to start, stop or restart a service (it runs a script in 
     You can also execute the shell script directly from /etc/init.d folder like: /etc/init.d/httpd stop. 
 
 
-SYSTEM RUNLEVELS (RedHat/Debian):
+SYSTEM RUNLEVELS:
 runlevel — Output previous and current runlevel
     0 — Shuts down the system
     1 — Administrative single-user mode
@@ -928,7 +927,6 @@ BASH:
 /etc/bash.bashrc — Executed at every shell startup, all users
 ~/.profile, .bash_profile, .bash_login — First file found executed at login, user specific 
 /etc/profile — Executed at login, all users (put PATHS here)
---
 /etc/rc.local — Last startup script executed, runs command as su
 
 
@@ -945,7 +943,8 @@ BINS:
 /usr/local/sbin — User system management programs, not managed by the distribution package
 
 
-ETC ( "Edit To Configure" / "Editable Text Configuration" ):
+CONFIGS:
+`etc` means "Edit To Configure" or "Editable Text Configuration".
 /etc/mailcap — Default programs for extensions 
 /etc/passwd — Users 
 /etc/groups — Groups 
@@ -981,7 +980,8 @@ NETWORK:
 /etc/NetworkManager/NetworkManager.conf — Configuration file
 
 
-PROC (various information about the system):
+PROC: 
+Various information about the system.
 /proc/cpuinfo — Information about the CPU
 /proc/modules —  information about which kernel-modules are loaded on your system
 /proc/net/ — Network related
@@ -996,24 +996,28 @@ PROC (various information about the system):
 /proc/net/wireless — Wireless connection info
 
 
-USR ("Unix System Resources"):
+USR:
+"Unix System Resources"
 /usr/lib/jvm — Java jres and jdks
 /usr/share/man — Man pages
 /usr/share/bash-completion — Bash completion functions
 
 
-SBIN — The "system-administrator's bin file":
+SBIN:
+The "system-administrator's bin file".
 Hosts programs that would be in /bin if they didn't have "root-only" access permissions.
 
 
-VAR — "variable":
+VAR:
+"variable"
 /var/log/ — System logs in here
 /var/log/auth.log — Logins
 /var/log/syslog — Most of the rest of the logs 
 /var/spool — Contains data which is awaiting some kind of later processing
 
 
-BOOT (kernels):
+BOOT:
+Kernels.
 /boot/grub/menu.lst — Grub configuration file
 /etc/default/grub — Grub configuration file
 
@@ -1080,7 +1084,7 @@ git tag — List local tags
 chown -R <user>:<group> * (sudo) — In .git/objects 
 git format-patch -1 <sha> — Generate patch file
 git rev-parse HEAD — Get sha of head
-git revert
+git revert — 
 git describe — Print version and hash of HEAD
 git log --name-only --author=<name> — Print changed files by commit
 git log <file> — Print files history
@@ -1107,10 +1111,10 @@ GITHUB MD FORMAT:
 
 
 BISECT:
-git bisect start
+git bisect start — 
 git bisect bad — Tell git that current version is bad
-git bisect good v25.0.2 — Tell git the last good version you know about
-now git will checkout a version in between, so you can check it and tell:
+git bisect good v25.0.2 — Tell git the last good version you know about.
+    Now git will checkout a version in between, so you can check it and tell:
 git bisect bad/good — This will continue until the commit that introduced the bug is found 
 git bisect reset — Exit bisect mode
 
@@ -1285,15 +1289,15 @@ wm — Controls when to wrap based on terminal size
 
 
 COLORSCHEME:
-:colorscheme darkblue, torte — Nice, darker
+:colorscheme — darkblue, torte — Nice, darker
     slate, default — Less contrast
 :highlight Normal ctermbg=grey — Set light background
 
 
 SPELLCHECK:
 :set spell spelllang=en_us — Turn spellcheck on
-:setlocal spell spelllang=en_us
 :set nospell — Turn off
+:setlocal spell spelllang=en_us — Set dictionary
 z= — Show suggestions for misspelled word
 ]s — Go to next misspelled word
 [s — Go to previous misspelled word
@@ -1354,20 +1358,22 @@ jar tf <jar> — Print contents of a jar
 
 
 INSTALL ORACLE JDK:
+```
 sudo apt-get remove openjdk*
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java7-installer
-
+```
 
 INSTALL ORACLE JDK ON DEBIAN:
+```
 echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | sudo tee /etc/apt/sources.list.d/webupd8team-java.list
 echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | sudo tee -a /etc/apt/sources.list.d/webupd8team-java.list
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 sudo apt-get update
 sudo apt-get install oracle-java7-installer
 sudo apt-get install oracle-java7-set-default
-
+```
 
 FIREFOX:
 about:config — Layout.css.devPixelsPerPx default zoom (-1.0)
@@ -1383,9 +1389,10 @@ xrandr  --output VGA1 --primary — Changes primary screen
 
 
 MOUNT ISO:
+```
 sudo mkdir /media/x
 sudo mount -o loop <path-to-iso> /media/x
-
+```
 
 ECLIPSE:
 ctrl+1 — Quick fix
@@ -1397,16 +1404,16 @@ objectaid — UML plugin
 
 
 WINE:
-winecfg -> drives tab to set drive
+winecfg — drives tab to set drive
 wine explorer /desktop=abalaba,1024x768 app.exe — Run wine app in virtual desktop
 reason on wine: down alt down — Open menu
 regedit — Registry editor
 
 
 CYGWIN:
-[cygwin] ssh-host-cofig, 
-[command prompt] net start sshd, 
-[any] ssh <windows username — CASE MATTERS!>@<host> — Run sshd (use windows password)
+[cygwin] ssh-host-cofig —  
+[command prompt] net start sshd — 
+[any] ssh <windows username - CASE MATTERS!>@<host> — Run sshd (use windows password)
 
 
 GOLANG:
@@ -1424,24 +1431,29 @@ go  build       — Compile packages and dependencies
     version     — Print Go version
     vet         — Run go tool vet on packages
 
-syntax highlight — Https://github.com/jnwhiteh/vim-golang 
-    — for gedit: sudo cp /usr/share/gtksourceview-3.0/language-specs/go.lang /usr/share/gtksourceview-2.0/language-specs/
+syntax highlight — `https://github.com/jnwhiteh/vim-golang`
+for gedit — `sudo cp /usr/share/gtksourceview-3.0/language-specs/go.lang /usr/share/gtksourceview-2.0/language-specs/`
 simple ncurses — Go get github.com/nsf/termbox-go
 
 
 REPACKAGING A LINUX INSTALL ISO:
 # Mount ISO
+```
 mkdir -p /mnt/linux
 mount -o loop /tmp/linux-install.iso /mnt/linux
+```
 
 # Copy contents to a working directory
+```
 cd /mnt/
 tar -cvf — Linux | (cd /var/tmp && tar -xf — )
+```
 
 # Make your changes and repackage (on debian use genisoimage). -c passes the name of the file that will be created
+```
 cd /var/tmp/linux
 mkisofs -o ../your-new.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -J -R -V Your Disk Name Here .
-
+```
 
 GDB:
 gdb <command> — Start gdb
