@@ -697,9 +697,9 @@ vipw — Edit password file
 vigr — Edit groups file
 umask —  the umask is a value set by the shell. It controls the default permissions of any file created
 usermod <user> — Modify user acount information
-    -l newname oldname — 
-    -c "new real name" username — 
-    -d /my/new/home username — Change location of the users home
+    -l <new_name> <old_name> — 
+    -c "<new_real_name>" <user> —
+    -d /my/new/home <user> — Change location of the users home
     -m -d /my/new/home — Also move the files
 useradd <user> — Add user
 adduser <user> — More high level (use `adduser <user> sudo`  after to add user to sudo group)
