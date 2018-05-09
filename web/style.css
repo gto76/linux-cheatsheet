@@ -22,20 +22,30 @@ html {
 .ocks-org h1,
 .ocks-org h2,
 .ocks-org h3,
-.ocks-org h4 {
+.ocks-org h4,
+.ocks-org h5 {
   font-family: "PT Sans", sans-serif;
 }
 
 .ocks-org h1,
 .ocks-org h2,
 .ocks-org h3,
-.ocks-org h4 {
+.ocks-org h4,
+.ocks-org h5 {
   color: #000;
 }
 
 .ocks-org header,
 .ocks-org footer {
   color: #636363;
+}
+
+h5 {
+  font-size: 54px;
+  font-weight: 300;
+  letter-spacing: -2px;
+  margin: .3em 0 .1em 0;
+  text-rendering: optimizeLegibility;
 }
 
 h1 {

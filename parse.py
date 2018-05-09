@@ -11,7 +11,7 @@ DEBUG = False
 
 TEMP = 'web/template.html'
 TEMP_ANCHOR = '<!-- INSERT_HERE -->'
-BATCH_SEPARATOR = "<tr style='padding:3px'><td width=155px></td><td></td></tr>"
+BATCH_SEPARATOR = "<tr><td width=155px></td><td></td></tr>"
 SKIP_LINES = 14
 SEP = ' — '
 TOP_PADDING = 7
@@ -97,10 +97,11 @@ def get_title(line, lines):
         title = next(lines).strip('# ')
         next(lines)
         pre = '\n<p><br><p>\n'
+        post = '\n<br>\n' if title == 'GNOME' else ''
         if first_h1:
             pre = ''
             first_h1 = False
-        return pre + format_title(title, 1)
+        return f'{pre}{format_title(title, 5)}{post}'
     elif line.startswith('===='):
         title = next(lines).strip(': ')
         next(lines)
@@ -127,7 +128,7 @@ def get_table(lines):
     line_batches = [parse_batch(a) for a in line_batches]
     out = BATCH_SEPARATOR.join(line_batches)
     # out = ''.join(line_batches)
-    out = f'<table width=780><tbody>\n{out}\n</tbody></table><br>'
+    out = f'<table width=780 style="border-spacing: 0px"><tbody>\n{out}\n</tbody></table><br>'
     return out
 
 
@@ -168,7 +169,7 @@ class Cmd:
         big_pad = s.options and (len(s.options) > 1 or s.desc)
         top_padding_this = TOP_PADDING if big_pad else SMALL_TOP_PADDING
         out = []
-        out.append(f'<tr><td style="padding-right: 10px;padding-top: {top_padding_this}px" valign="top"><strong><code>{s.name}</code>' \
+        out.append(f'<tr><td style="padding-right: 10px;padding-top: {top_padding_this}px;width: 155px" valign="top"><strong><code>{s.name}</code>' \
                    f'</strong></td>')
         if s.desc:
             out.append(f'<td style="padding-top: {top_padding_this}px" valign="top">{format_desc(s.desc)}</td></tr>\n')
@@ -184,10 +185,10 @@ class Cmd:
         if options_str:
             options = ''.join(options_str)
             if s.desc:
-                out.append(f'<tr> <td></td> <td><table>\n{options}\n' \
+                out.append(f'<tr> <td></td> <td><table style="border-spacing: 0px">\n{options}\n' \
                            f'</table> </td> </tr>\n')
             else:
-                out.append(f'<td><table>\n{options}\n' \
+                out.append(f'<td valign="top"><table style="border-spacing: 0px">\n{options}\n' \
                            f'</table> </td> </tr>\n')
         return ''.join(out)
 

@@ -29,7 +29,7 @@ Alt F2 — Toggle maximize window
 Alt F3 — Toggle full screen
 Ctrl+Alt D — Minimize all windows
 
-Ctrl+Alt F1-F6 — Terminals
+Ctrl+Alt F1-F6 — Terminals (tty-s)
 Ctrl+Alt F7-F12 — Xwindows
 Ctrl+Alt Bksp — Restart X
 Ctrl+Alt Del — Log out
@@ -224,7 +224,7 @@ cp  -i — Interactive (Prompts before overwrite)
     --preserve=all — Also preserves context, links and xattr
 rm  -i — Interactive (Prompts before every removal)
     -v — Verbose (Explains what is being done)
-    -f — Force remove (does not prompt)
+    -f — Force remove (Does not prompt, useful if `rm` is aliased with `-i`)
     -R — Removes directories and their content recursively 
 mkdir  -p — Make parents if needed
 ln — Makes links to the files
@@ -452,7 +452,8 @@ wc — Count lines, words and characters
 
 EDIT:
 sudo -e <file> — Edit file as sudo
-tr <from> <to> — Translate or delete characters (`-d` for delete)
+tr <from> <to> — Translate characters
+    -d — Delete characters
 cut <file> — Removes columns from each line of files
     -d ':' -f 1,7 /etc/passwd — Only show the username and the shell
 sort — Sorts lines
@@ -501,18 +502,19 @@ patch — Apply a diff file to original
 
 
 SEARCH:
-grep — -v — Inverse
+grep <patt> <file> — -v — Inverse
     -n — Line numbers 
     -w — Whole word 
-    -A<x> | -B<x> — X lines after or before
+    -A<num> — Print also num lines after
+    -B<num> — Print also num lines before
     -r — Recursive 
-    -o, --only-matching — Print only matching part
-    -P — Perl notation (if you need \\t, + or .*? [? meaning non greedy]!!!!) 
+    -o — Print only matching part
+    -P — Perl notation with additional operators such as: `\\t`, `+` and `?` (non-greedy!!!!).
     -i — Ignore case 
     -I — Do not process binary files 
     -l — Just print files with matches 
     -L — Just print files without matches
-    -e <pattern> — Specify pattern (needed if it starts with -!!!!!!!)
+    -e <patt> — Necesarry to put before pattern if it starts with `-`!!!!!!! or if you want multiple patterns.
     | wc -l — Count occurrences
     --line-buffered — Processes input line by line instead of in bigger chunks
 look — Display lines beginning with a given string
@@ -549,14 +551,14 @@ whois — Info about domain
 host <ip/hostname> — DNS lookup utility
 nslookup — Same interactively
 dig — Same, lot of options
-hostname — Prints/sets computer name, to set it permanently edit /etc/hostname and /etc/hosts
+hostname — Prints/sets computer name, to set it permanently edit `/etc/hostname` and `/etc/hosts`
 netstat — Displays contents of /proc/net files,  status of ports...
     -r — Show routing table
     -i — Show interfaces
 arp — Manipulate the system ARP cache (IP -> mac)
 route — Tool used to display or modify the routing table
     add default gw 192.168.1.10 — Change the default gateway
-    should DNS not be configured correctly on your machine, you need to edit "/etc/resolv.conf" to make things work
+    should DNS not be configured correctly on your machine, you need to edit `/etc/resolv.conf` to make things work
 ifconfig eth0   down/up (sudo) — Turn network interface on/off 
     192.168.1.4 netmask 255.255.255.0 up — Set ip and mask
 ifup eth0 — Will bring eth0 up if it is currently down.
@@ -652,7 +654,7 @@ nmap — -sP 192.168.1.1-3 — Network scanning
     192.168.1.3 -p100-139 — Port scanning
     -O 192.168.1.3 (sudo) — Scanning os 
 tcpdump (sudo) — Sniffer (show network traffic) 
-    -l — Buffered output (for piping to less, etc...)
+    -l — Buffered output (for piping to less, etc.)
 ettercap — Multipurpose sniffer/interceptor/logger for switched LAN (can detect man in the middle, denial of service, DNS spoofing)
 driftnet — Picks out and displays images from network traffic
 kismet — Wireless 802.11b monitoring tool
@@ -700,7 +702,7 @@ usermod <user> — Modify user acount information
     -d /my/new/home username — Change location of the users home
     -m -d /my/new/home — Also move the files
 useradd <user> — Add user
-adduser <user> — More high level (use 'adduser <user> sudo' after to add user to sudo group)
+adduser <user> — More high level (use `adduser <user> sudo`  after to add user to sudo group)
     --system — Create system user (can not log in) 
     <group> — Add user to group (only takes effect after login!!!)
 groups <user> — What groups user belongs to
@@ -777,7 +779,7 @@ lspci [-tv] — Show pci info
 lsusb [-tv] — Show usb info
 lscpu — Print CPU information
 dmidecode -q — Display bios/dmi information like ram size/type,
-    max ram, computer model name, cpu information..
+    max ram, computer model name, cpu information.
 smartctl  -A /dev/sda — Show disk usage info
 hdparm  -tT /dev/sda — Do a read speed test
 badblocks  -s /dev/sda — Check for bad blocks
@@ -841,10 +843,10 @@ pmap — Report memory map of a process (mapped file)
 
 
 JOBS:
-ctrl-z — Put job into background
+Ctrl z — Put job into background
 jobs — Prints currently running job
-bg <job_number> — Put job in background
-fg <job_number> — Bring job to the foreground
+bg <job_id> — Put job in background
+fg <job_id> — Bring job to the foreground
 %n — Job number n
 %s — Job whose command line starts with s
 %% — Current job
@@ -935,9 +937,9 @@ aview, asciiview — ASCII art image viewer and video player
 
 
 
-#########################
-## AWESOME LINUX FILES ##
-#########################
+##########################
+## AWESOME DEBIAN FILES ##
+##########################
 
 BASH:
 ~/.bashrc — Executed at every shell startup, user specific
@@ -952,33 +954,34 @@ HOME:
 
 
 BINS:
-/bin — Key programs like ls, cat, bash,...
-/sbin — Key programs for system management like ifconfig, mkfs, fdisk...
+/bin — Key programs like ls, cat, bash, ...
+/sbin — Key programs for system management like ifconfig, mkfs, fdisk, ...
 /usr/bin — Distribution managed programs
 /usr/sbin — Distribution managed system programs
 /usr/local/bin — User programs not managed by the distribution package
 /usr/local/sbin — User system management programs, not managed by the distribution package
 
 
-CONFIGS:
-`etc` means "Edit To Configure" or "Editable Text Configuration".
+GENERAL CONFIG:
+"Edit To Configure" or "Editable Text Configuration".
 /etc/mailcap — Default programs for extensions 
 /etc/passwd — Users 
 /etc/groups — Groups 
-/etc/default/console-setup — Set (tty) console character set, font size...
-/etc/fstab — Filesystam table. To mount drive at startup create folder in /media and add line like this (see man fstab for details):
-    /dev/sda1   /media/data   ntfs   user,fmask=0111,dmask=0000   0   2
-/etc/alternatives — Links to default application versions (here you can change the default java jdk)
+/etc/default — Boot script parameters that the end user or administrator is likely to change.  
+    /console-setup — Set console (tty) character set, font size, ...
+/etc/fstab — Filesystem table. To mount drive at startup, create dir in `/media` and append line like this :
+    `/dev/sda1   /media/data   ntfs   user,fmask=0111,dmask=0000   0   2` (Check `man fstab` for details).
+/etc/alternatives — Links to default application versions (here you can change the default Java JDK)
 /etc/issue — Name and version of distribution
 /etc/fstab — Automatic mounts are handled by configuring the file
 /etc/sudoers — Lists of users and the commands they can run with sudo (needs to be edited with visudo command)
-/etc/apt/sources.list — List of places where to look for packages
+/etc/apt  /sources.list — List of places where to look for packages
 
 
 SERVICES:
-/etc/init/, ~/.init/ — Init — Upstart init daemon job configuration
-/etc/init.d/ — Folder with service scripts, that get executed at start and end
-/etc/init.d/halt — Runs at the end 
+/etc/init/, ~/.init/  Init — Upstart init daemon job configuration
+/etc/init.d — Folder with service scripts, that get executed at start and end
+    /halt — Runs at the end 
 /etc/rc<level>.d — Startup scripts for different runlevels - Links to scripts in /etc/init.d - S85httpd -> S means startup, K is for stop. (To disable service just change S for K)
 /etc/rc.local — Last initialization file executed - Put your commands here
 
@@ -986,38 +989,38 @@ SERVICES:
 /etc/ssh/sshd_config — Sshd config
 /etc/crontab — System-wide crontab
 /etc/cron.hourly, /etc/cron.daily, ... — Links to scripts that will execute periodically. Scripts within a cron directory are run alphabetically.
-/etc/rsyslog.conf|rsyslog.d/50-default.conf — Log conf (need to restart rsyslogd after edit)
+/etc/rsyslog.conf | rsyslog.d/50-default.conf — Log conf (need to restart rsyslogd after edit)
 /etc/syslog.conf — Configuration information for syslogd 
 
 
 NETWORK:
 /etc/resolv.conf — Dns information
-/etc/sysconfig/networking/devices/ifcfg-eth0 — Use ifcfg to configure a particular interface
+/etc/sysconfig  /networking/devices/ifcfg-eth0 — Use ifcfg to configure a particular interface
 /etc/services — List of internet services with their port numbers
-/etc/NetworkManager/NetworkManager.conf — Configuration file
+/etc/NetworkManager  /NetworkManager.conf — Configuration file
 
 
 PROC: 
 Various information about the system.
 /proc/cpuinfo — Information about the CPU
 /proc/modules —  information about which kernel-modules are loaded on your system
-/proc/net/ — Network related
-/proc/net/route — Routing table
-    netstat — Displays contents of /proc/net files
+/proc/net — Network related
+    /route — Routing table
+    /netstat — Displays contents of /proc/net files
 /proc/iomem — Neat memory map
 /proc/partitions — Partitions info
-/proc/acpi/battery/BAT1/info — Battery info
-/proc/acpi/ac_adapter/ACAD/state — Adapter info
-/proc/acpi/wakeup — List of devices that can wake up your machine via acpi
+/proc/acpi  /battery/BAT1/info — Battery info
+    /ac_adapter/ACAD/state — Adapter info
+    /wakeup — List of devices that can wake up your machine via acpi
     sudo sh -c "echo USB1 > /proc/acpi/wakeup" — Enable device USB1 to wakeup computer from sleep/suspend
 /proc/net/wireless — Wireless connection info
 
 
 USR:
 "Unix System Resources"
-/usr/lib/jvm — Java jres and jdks
-/usr/share/man — Man pages
-/usr/share/bash-completion — Bash completion functions
+/usr/lib  /jvm — Java JREs and JDKs
+/usr/share  /man — Man pages
+    /bash-completion — Bash completion functions
 
 
 SBIN:
@@ -1026,10 +1029,10 @@ Hosts programs that would be in /bin if they didn't have "root-only" access perm
 
 
 VAR:
-"variable"
-/var/log/ — System logs in here
-/var/log/auth.log — Logins
-/var/log/syslog — Most of the rest of the logs 
+"Variable"
+/var/log — System logs in here
+    /auth.log — Logins
+    /syslog — Most of the rest of the logs 
 /var/spool — Contains data which is awaiting some kind of later processing
 
 
@@ -1065,20 +1068,18 @@ GENERATE SSH KEY:
 
 ADD TO GITHUB:
 ```
-Create remote repository on website
+# Create remote repository on website.
 git remote add origin git@github.com:/<user>/<project>.git
 git pull origin master
 git push origin master
-after your first push, you can simply type:
-git push
-sometimes also: git push --set-upstream origin master
+# Sometimes also: git push --set-upstream origin master
 ```
 
 REMOTE:
-git remote update — Get info about state of remote
-git remote show origin — Print address of the origin
-git remote set-url origin git@github.com:<user>/<repo>.git — Change the url of origin, ssh key needed
-git remote set-url origin https://www.github.com/<user>/<repo>.git — Same, but withouth key
+git remote  update — Get info about state of remote
+    show origin — Print address of the origin
+    set-url origin git@github.com:<user>/<repo>.git — Change the url of origin, ssh key needed
+    set-url origin https://www.github.com/<user>/<repo>.git — Same, but withouth key
 git status -uno — Check if everything up-to-date
 git fetch; git checkout <branch> — Checkout remote branch
 
@@ -1089,8 +1090,8 @@ git fetch --tags — Pulling tags (automatically if on the same branch and there
 
 
 UNDO:
-git reset --hard HEAD~1 — Delete last commit and all of its changes
-git reset HEAD~1 — Delete last commit but keep your changes
+git reset  --hard HEAD~1 — Delete last commit and all of its changes
+    HEAD~1 — Delete last commit but keep your changes
 
 
 ALSO USEFUL:
