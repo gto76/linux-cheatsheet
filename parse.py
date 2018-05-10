@@ -127,8 +127,8 @@ def get_table(lines):
     line_batches = get_line_batches(lines)
     line_batches = [parse_batch(a) for a in line_batches]
     out = BATCH_SEPARATOR.join(line_batches)
-    # out = ''.join(line_batches)
-    out = f'<table width=780 style="border-spacing: 0px"><tbody>\n{out}\n</tbody></table><br>'
+    out = f'<table width=780 style="border-spacing: 0px"><tbody>\n{out}\n' \
+          f'</tbody></table><br>'
     return out
 
 
@@ -169,59 +169,65 @@ class Cmd:
         big_pad = s.options and (len(s.options) > 1 or s.desc)
         top_padding_this = TOP_PADDING if big_pad else SMALL_TOP_PADDING
         out = []
-        out.append(f'<tr><td style="padding-right: 10px;padding-top: {top_padding_this}px;width: 155px" valign="top"><strong><code>{s.name}</code>' \
-                   f'</strong></td>')
+        name = f'<tr><td style="padding-right: 10px;padding-top: ' \
+               f'{top_padding_this}px;width: 155px" valign="top"><strong>' \
+               f'<code>{s.name}</code></strong></td>'
+        out.append(name)
         if s.desc:
-            out.append(f'<td style="padding-top: {top_padding_this}px" valign="top">{format_desc(s.desc)}</td></tr>\n')
+            desc = f'<td style="padding-top: {top_padding_this}px" ' \
+                   f'valign="top">{format_desc(s.desc)}</td></tr>\n'
+            out.append(desc)
         options_str = []
         top_padding = 0
         for i, opt in enumerate(s.options):
             if not s.desc and i == 0:
                 top_padding = top_padding_this
-            options_str.append(f'<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:{top_padding}px" valign="top"><strong><code>{opt.name}</code>' \
-                               f'</strong></td><td style="padding-top:{top_padding}px" valign="top">{format_desc(opt.desc)}</td>' \
-                               f'</tr>\n')
+            option = f'<tr> <td style="width:1px;white-space:nowrap' \
+                     f';padding-right:10px;padding-top:{top_padding}px" '\
+                     f'valign="top"><strong><code>{opt.name}</code></strong>' \
+                     f'</td><td style="padding-top:{top_padding}px" ' \
+                     f'valign="top">{format_desc(opt.desc)}</td></tr>\n'
+            options_str.append(option)
             top_padding = 0
         if options_str:
             options = ''.join(options_str)
+            options_table = f'<table style="border-spacing: 0px">\n' \
+                            f'{options}\n</table>'
             if s.desc:
-                out.append(f'<tr> <td></td> <td><table style="border-spacing: 0px">\n{options}\n' \
-                           f'</table> </td> </tr>\n')
+                out.append(f'<tr> <td></td> <td> {options_table} </td> </tr>\n')
             else:
-                out.append(f'<td valign="top"><table style="border-spacing: 0px">\n{options}\n' \
-                           f'</table> </td> </tr>\n')
+                out.append(f'<td valign="top"> {options_table} </td> </tr>\n')
         return ''.join(out)
-
 
 
 def parse_batch(lines):
     '''
-    apt-get — Advanced Package Tool built on top of dpkg. New command called simply
-            `apt` is also available. It merges the functionalities of `apt-get` and
-            `apt-cache`.
+    Input example
+    -------------
+    apt-get — Advanced Package Tool built on top of dpkg. New command called 
+            simply `apt` is also available. It merges the functionalities of 
+            `apt-get` and `apt-cache`.
         update — Updates local list of existing packages.
-        -u dist-upgrade — Upgrades by intelligently handling changing dependencies 
-                with new versions of packages. To regularly update put this line: 
-                `apt-get update && apt-get -u dist-upgrade` in `crontab`.
+        -u dist-upgrade — Upgrades by intelligently handling changing 
+                dependencies with new versions of packages. To regularly update 
+                put this line: `apt-get update && apt-get -u dist-upgrade` in 
+                `crontab`.
     
-    Name and description:
+    Elements
+    --------
+    ### Name and description
     abc — abc abd ..
             abc abc
 
-    Name and option:
-    abc — abc — abd ..
+    ### Name and option
+    abc  abc — abd ..
             abc abc
 
-    Option:
+    ### Option
         abc — abc abc ...
-                 abc abc
-
-    If starts with ch, split:
-       if three then option
-
-    If does not contain —:
-        continuation
+                abc abc
     '''
+
     out = []
     cmd = None
     for line in lines:
