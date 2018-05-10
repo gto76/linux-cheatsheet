@@ -93,8 +93,9 @@ apt-get — Advanced Package Tool built on top of dpkg. New command called simpl
         `apt-cache`.
     update — Updates local list of existing packages.
     -u dist-upgrade — Upgrades by intelligently handling changing dependencies 
-            with new versions of packages. To regularly update put this line: 
-            `apt-get update && apt-get -u dist-upgrade` in `crontab`. 
+            with new versions of packages. To regularly update put this line 
+            in `crontab`:  
+            `apt-get update && apt-get -u dist-upgrade`. 
     upgrade — Same as dist-upgrade, but will not remove installed packages or 
             install new ones.
     install <package> — Also updates single package.
@@ -731,8 +732,9 @@ ntfsundelete — Undelete files on NTFS partition
 LOGGING:
 last — When various users have logged in or out. This includes information on when the computer was rebooted.
 lastlog — Displays a list of users and what day/time they logged into the 
-        system. To get all failed logins run:
-        `cat /var/log/auth.log | grep "failed password" -i`.
+    system.  
+    To get all failed logins run:  
+    `cat /var/log/auth.log | grep "failed password" -i`.
 rsyslogd —  manages all the logs on your system
     closelog, openlog, syslog, vsyslog -> library calls that send messages to the system logger
 logger — Makes entries in the system log

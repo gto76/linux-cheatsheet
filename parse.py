@@ -295,7 +295,11 @@ def convert_specials(line):
 
 
 def format_desc(lines):
-        return ' '.join(a.strip() for a in lines)
+    out = []
+    for line in lines:
+        line = re.sub('  $', '<br>', line)
+        out.append(line)
+    return ' '.join(a.strip() for a in out)
 
 
 def read_file(filename):
