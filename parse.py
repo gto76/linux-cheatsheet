@@ -248,6 +248,9 @@ def parse_batch(lines):
 
 
 def process_desc_or_opt(line, cmd):
+    if line.endswith(' —'):
+        cmd.add_option(line[:-2])
+        return
     if SEP not in line:
         try:
             cmd.append(line)
