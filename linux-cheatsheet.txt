@@ -62,7 +62,7 @@ Ctrl S — Scroll lock
 
 
 BASH:
-Keys when in emacs mode. You can switch to vi mode with `set -o vi` command.
+Keys when in emacs mode. You can switch to `vi` mode with `set -o vi` command.
 Ctrl C — Interrupt, erase line
 Ctrl A — Go to beginning of line
 Ctrl E — End of line
@@ -88,9 +88,9 @@ PACKAGES:
 dpkg — Low level package manager for Debian.
     -l — Lists installed packages.
     -i <package> (sudo) — Installs package from a package file.
-apt-get — Advanced Package Tool built on top of dpkg. New command called simply
-        `apt` is also available. It merges the functionalities of `apt-get` and
-        `apt-cache`.
+apt-get — Advanced Package Tool built on top of `dpkg`. New command called 
+        simply `apt` is also available. It merges the functionalities of 
+        `apt-get` and `apt-cache`.
     update — Updates local list of existing packages.
     -u dist-upgrade — Upgrades by intelligently handling changing dependencies 
             with new versions of packages. To regularly update put this line 
@@ -162,11 +162,14 @@ man — Help on commands.
 echo — Prints passed text.
     -n — Does not add newline at the end.
     -e — Enables interpretation of backslashed letters.
-xargs <cmd> — Passes output from one command to arguments of another.
+xargs <cmd> — Passes output from one command to arguments of another:  
+        `echo -a | xargs ls`
     -t — Echoes the command before executing it. 
     -p — Echoes command and asks for confirmation before execution.
     -0 — Input items are separated by null character instead of space.
-tee <file> — Sends output of a program to specified file and to standard output.
+tee <file> — Sends output of a program to specified file and to standard 
+        output:  
+        `<cmd_1> | tee out_1.txt | <cmd_2>`
     /dev/tty — Sends output to terminal and to standard output
 expr — Evaluates passed expression.
     1 + 1 — Prints `2`.
@@ -174,19 +177,29 @@ bc — Evaluates input. It's basicaly a calculator, but also porvides some contr
         sentences.
     echo 1 + 1 | bc — Prints `2`.
     echo "scale=5;3/4" | bc — Prints `.75000`.
+sh — Runs command interpreter (shell). Can run a script even if not executable.
+    -c '<commands>' — Starts new non-interactive shell and reads commands from 
+        arguments instead of `stdin`.  
+        To append lines to system configuration file run:  
+        `sudo sh -c 'echo "<text>" >> <file>'`
+bash — Runs bash command interpreter (shell).
+    -c — Reads commands from arguments instead of `stdin`.
+    -n <script> — Checks script for errors.
+    -x — Prints commands before execution. Useful for debugging.
+gcc — Gnu C compiler. Run `g++` for C++ code.
+    -w — Supresses warnings (Only prints errors).
+    -Wall — All warnings.
+    -g — Compile for debugging.
+    -std=<std> — Sets the standard. Suported standards for C are:  
+        `c90`, `gnu90`, `c99`, `gnu99`, `c11` and `gnu11`.  
+        Suported standarts for C++ are:  
+        `c++98`, `gnu++98`, `c++11` and `gnu++11`.  
+        `gnu90` and `gnu++98` are the default options.
+    -O<level> — Optimization level. `0`: Reduce compilation time (default),
+        `1-3`: - Level of optimization, `s` - Optimize for size, `g` - Optimize
+        debugging experience.
 
-
-sh — Run command interpreter (shell). Can run a script even if not executable.
-    -c '<commands>' — Start new non-interactive shell and read commands from arguments instead of stdin. To append lines to system configuration file run `sudo sh -c 'echo "bla bla bla" >> <file>'`.
-bash — Run bash command interpreter (shell)
-    -c — Read commands from arguments instead of stdin
-    -n <script> — Check script for errors
-    -x — Outputs lines before execution, good for debugging
-
-gcc — Gnu c compiler
-    -w — Supress warnings (only print errors) 
-    -a — Show all sections
-run-parts — Run all scripts or programs in a directory
+run-parts <dir> — Runs all scripts or programs in a directory.
 date — Tells you date and time, also can set
     -s <string> — Set date
     +%T -s "10:13:13" — Set time
