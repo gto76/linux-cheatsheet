@@ -198,26 +198,25 @@ gcc — Gnu C compiler. Run `g++` for C++ code.
     -O<level> — Optimization level. `0`: Reduce compilation time (default),
         `1-3`: - Level of optimization, `s` - Optimize for size, `g` - Optimize
         debugging experience.
-
 run-parts <dir> — Runs all scripts or programs in a directory.
-date — Tells you date and time, also can set
-    -s <string> — Set date
-    +%T -s "10:13:13" — Set time
-timedatectl — Control the system time and date.
-    set-timezone CET — Sets timezone
+date — Tells and sets date and time.
+    -s <string> — Sets date.
+    +%T -s "10:13:13" — Sets time.
+timedatectl — Controls the system time and date.
+    set-timezone CET — Sets timezone.
 cal — Calendar
-xclip — Copies to clipboard
+xclip — Copies to clipboard.
 mkfifo <pipe> — Creates named pipe during that shell session.
-mkisofs — Create a DVD/CD image 
-genisoimage — Create a DVD/CD image (Debian)
-cdrecord — Write to a CD/DVD
-acpi — Check battery
-fdisk -l (sudo) — Show partitions 
+mkisofs — Creates a DVD/CD image.
+genisoimage — Creates a DVD/CD image (Debian).
+cdrecord — Writes to a CD/DVD.
+acpi — Checks battery.
+fdisk -l (sudo) — Shows partitions. 
 shutdown — Closes down the system at a given time.
     now — Takes you to the single user mode.
     -h now — Begins the shutdown procedure, same as `halt` and `poweroff`.
     -h 11:50 — At 11:50.
-    -r now — Reboot, same as `reboot`.
+    -r now — Same as `reboot`.
 make — Utility that maintains groups of programs.
     -q — Doesn't run any commands, just returns `0` exit code if everything is
             up to date or non-zero otherwise.
