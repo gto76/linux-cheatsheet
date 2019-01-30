@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Usage: parse.py 
+# Usage: parse.py filename
 # 
 
 from collections import namedtuple
