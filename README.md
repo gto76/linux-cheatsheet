@@ -1,5 +1,6 @@
 Comprehensive Linux Cheatsheet
 ==============================
+![Penguin Colony](web/penguins.jpg)
 
 ### Available at https://gto76.github.io/linux-cheatsheet/
 
