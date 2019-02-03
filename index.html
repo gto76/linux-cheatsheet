@@ -344,7 +344,7 @@ sudo make install</code></pre>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>1 + 1</code></strong></td><td style="padding-top:0px" valign="top">Prints '<code>2</code>'.</td></tr>
 
 </table> </td> </tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>bc</code></strong></td><td style="padding-top: 7px" valign="top">Evaluates input. It's basicaly a calculator, but also porvides some control sentences.</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>bc</code></strong></td><td style="padding-top: 7px" valign="top">Evaluates input. It's basically a calculator, but also provides some control commands.</td></tr>
 <tr> <td></td> <td> <table style="border-spacing: 0px">
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>echo 1 + 1 | bc</code></strong></td><td style="padding-top:0px" valign="top">Prints '<code>2</code>'.</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>echo "scale=5;3/4" | bc</code></strong></td><td style="padding-top:0px" valign="top">Prints '<code>.75000</code>'.</td></tr>
@@ -475,7 +475,7 @@ sudo make install</code></pre>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>locate &lt;regex&gt;</code></strong></td><td style="padding-top: 7px" valign="top">Similar as '<code>find</code>' but using index</td></tr>
 <tr> <td></td> <td> <table style="border-spacing: 0px">
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-i</code></strong></td><td style="padding-top:0px" valign="top">Ignore case</td></tr>
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>--regex</code></strong></td><td style="padding-top:0px" valign="top">Interprets all patterens as extended regex</td></tr>
+<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>--regex</code></strong></td><td style="padding-top:0px" valign="top">Interprets all patterns as extended regex</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-0 | xargs -0 &lt;cmd&gt;</code></strong></td><td style="padding-top:0px" valign="top">Sends found files to a command as parameters.</td></tr>
 
 </table> </td> </tr>
@@ -844,7 +844,7 @@ done &lt;&lt;&lt; "$list" — </code></pre>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-I</code></strong></td><td style="padding-top:0px" valign="top">Do not process binary files</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-l</code></strong></td><td style="padding-top:0px" valign="top">Just print files with matches</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-L</code></strong></td><td style="padding-top:0px" valign="top">Just print files without matches</td></tr>
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-e &lt;patt&gt;</code></strong></td><td style="padding-top:0px" valign="top">Necesarry to put before pattern if it starts with '<code>-</code>'!!!!!!! or if you want multiple patterns.</td></tr>
+<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-e &lt;patt&gt;</code></strong></td><td style="padding-top:0px" valign="top">Necessary to put before pattern if it starts with '<code>-</code>'!!!!!!! or if you want multiple patterns.</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>| wc -l</code></strong></td><td style="padding-top:0px" valign="top">Count occurrences</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>--line-buffered</code></strong></td><td style="padding-top:0px" valign="top">Processes input line by line instead of in bigger chunks</td></tr>
 
@@ -860,9 +860,9 @@ done &lt;&lt;&lt; "$list" — </code></pre>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>gs</code></strong></td><td style="padding-top: 1px" valign="top">Ghostscript: postscript and PDF language interpreter and previewer</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>pdftohtml</code></strong></td><td style="padding-top: 1px" valign="top">Pdf to html</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>pdftotext</code></strong></td><td style="padding-top: 1px" valign="top">Pdf to text</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>libreoffice</code></strong></td><td style="padding-top: 1px" valign="top">New openoffice</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>figlet</code></strong></td><td style="padding-top: 1px" valign="top">Display large characters made up of ordinary screen characters (ascii art)</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>toilet</code></strong></td><td style="padding-top: 1px" valign="top">Similar (ascii art)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>libreoffice</code></strong></td><td style="padding-top: 1px" valign="top">New Openoffice</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>figlet</code></strong></td><td style="padding-top: 1px" valign="top">Display large characters made up of ordinary screen characters (Ascii art)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>toilet</code></strong></td><td style="padding-top: 1px" valign="top">Similar (Ascii art)</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>cproto</code></strong></td><td style="padding-top: 1px" valign="top">Generates C function prototypes (declarations)</td></tr>
 
 </tbody></table><br>
@@ -896,12 +896,12 @@ done &lt;&lt;&lt; "$list" — </code></pre>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>arp</code></strong></td><td style="padding-top: 1px" valign="top">Manipulate the system ARP cache (IP -&gt; mac)</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>route</code></strong></td><td style="padding-top: 7px" valign="top">Tool used to display or modify the routing table</td></tr>
 <tr> <td></td> <td> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>add default gw 192.168.1.10</code></strong></td><td style="padding-top:0px" valign="top">Change the default gateway should DNS not be configured correctly on your machine, you need to edit '<code>/etc/resolv.conf</code>' to make things work</td></tr>
+<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>add default gw &lt;ip&gt;</code></strong></td><td style="padding-top:0px" valign="top">Change the default gateway should DNS not be configured correctly on your machine, you need to edit '<code>/etc/resolv.conf</code>' to make things work</td></tr>
 
 </table> </td> </tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>ifconfig eth0</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:7px" valign="top"><strong><code>down/up (sudo)</code></strong></td><td style="padding-top:7px" valign="top">Turn network interface on/off</td></tr>
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>192.168.1.4 netmask 255.255.255.0 up</code></strong></td><td style="padding-top:0px" valign="top">Set ip and mask</td></tr>
+<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>&lt;ip&gt; netmask &lt;mask&gt; up</code></strong></td><td style="padding-top:0px" valign="top">Set ip and mask</td></tr>
 
 </table> </td> </tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>ifup eth0</code></strong></td><td style="padding-top: 1px" valign="top">Will bring eth0 up if it is currently down.</td></tr>
@@ -909,7 +909,7 @@ done &lt;&lt;&lt; "$list" — </code></pre>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:7px" valign="top"><strong><code>link show</code></strong></td><td style="padding-top:7px" valign="top">List network interfaces</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>link set dev eth0 up</code></strong></td><td style="padding-top:0px" valign="top">Bring interface eth0 up or down</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>addr show</code></strong></td><td style="padding-top:0px" valign="top">List addresses of interfaces</td></tr>
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>route add default via 1.2.3.254</code></strong></td><td style="padding-top:0px" valign="top">Set default gateway</td></tr>
+<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>route add default via &lt;ip&gt;</code></strong></td><td style="padding-top:0px" valign="top">Set default gateway</td></tr>
 
 </table> </td> </tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>traceroute, traceroute6, traceroute6.iputils</code></strong></td><td style="padding-top: 1px" valign="top">Traces route</td></tr>
@@ -1054,7 +1054,7 @@ done &lt;&lt;&lt; "$list" — </code></pre>
 
 </table> </td> </tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>ip link set eth0</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:7px" valign="top"><strong><code>promisc on</code></strong></td><td style="padding-top:7px" valign="top">Set network inerface to promiscuous mode</td></tr>
+<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:7px" valign="top"><strong><code>promisc on</code></strong></td><td style="padding-top:7px" valign="top">Set network interface to promiscuous mode</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>multicast off</code></strong></td><td style="padding-top:0px" valign="top">Set multicast off</td></tr>
 
 </table> </td> </tr>
@@ -1098,7 +1098,7 @@ done &lt;&lt;&lt; "$list" — </code></pre>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>vipw</code></strong></td><td style="padding-top: 1px" valign="top">Edit password file</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>vigr</code></strong></td><td style="padding-top: 1px" valign="top">Edit groups file</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>umask</code></strong></td><td style="padding-top: 1px" valign="top">the umask is a value set by the shell. It controls the default permissions of any file created</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>usermod &lt;user&gt;</code></strong></td><td style="padding-top: 7px" valign="top">Modify user acount information</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>usermod &lt;user&gt;</code></strong></td><td style="padding-top: 7px" valign="top">Modify user account information</td></tr>
 <tr> <td></td> <td> <table style="border-spacing: 0px">
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-l &lt;new_name&gt; &lt;old_name&gt;</code></strong></td><td style="padding-top:0px" valign="top"></td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-c "&lt;new_real_name&gt;" &lt;user&gt;</code></strong></td><td style="padding-top:0px" valign="top"></td></tr>
@@ -1236,7 +1236,7 @@ done &lt;&lt;&lt; "$list" — </code></pre>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>stty</code></strong></td><td style="padding-top: 1px" valign="top">Change and print terminal line settings</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>openvt</code></strong></td><td style="padding-top: 1px" valign="top">run a program on a next available tty</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>script</code></strong></td><td style="padding-top: 1px" valign="top">Makes a typescript of everything printed on your terminal. Ctrl-d to stop recording.</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>setterm</code></strong></td><td style="padding-top: 7px" valign="top">Set terminal atributes</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>setterm</code></strong></td><td style="padding-top: 7px" valign="top">Set terminal attributes</td></tr>
 <tr> <td></td> <td> <table style="border-spacing: 0px">
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-cursor off/on</code></strong></td><td style="padding-top:0px" valign="top">Set cursor on/off</td></tr>
 
@@ -1613,8 +1613,7 @@ git push origin master
 <tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>git remote</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:7px" valign="top"><strong><code>update</code></strong></td><td style="padding-top:7px" valign="top">Get info about state of remote</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>show origin</code></strong></td><td style="padding-top:0px" valign="top">Print address of the origin</td></tr>
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>set-url origin git@github.com:&lt;user&gt;/&lt;repo&gt;.git</code></strong></td><td style="padding-top:0px" valign="top">Change the url of origin, ssh key needed</td></tr>
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>set-url origin https://www.github.com/&lt;user&gt;/&lt;repo&gt;.git</code></strong></td><td style="padding-top:0px" valign="top">Same, but withouth key</td></tr>
+<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>set-url origin &lt;origin&gt;</code></strong></td><td style="padding-top:0px" valign="top">'<code>git@github.com:&lt;user&gt;/&lt;repo&gt;.git</code>' - Change the url of origin, ssh key needed; '<code>https://www.github.com/&lt;user&gt;/&lt;repo&gt;.git</code>' - Same, but withouth key.</td></tr>
 
 </table> </td> </tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>git status -uno</code></strong></td><td style="padding-top: 1px" valign="top">Check if everything up-to-date</td></tr>
@@ -1724,10 +1723,7 @@ git push origin master
 <table width=780 style="border-spacing: 0px"><tbody>
 <tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>ctrl+]</code></strong></td><td style="padding-top: 1px" valign="top">Follow link</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>ctrl+o</code></strong></td><td style="padding-top: 1px" valign="top">Go back</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:q</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:1px" valign="top"><strong><code></code></strong></td><td style="padding-top:1px" valign="top">Exit help<br></td></tr>
-
-</table> </td> </tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:q</code></strong></td><td style="padding-top: 1px" valign="top">Exit help<br></td></tr>
 
 </tbody></table><br>
 <h3>Movement</h3>
@@ -1810,47 +1806,26 @@ git push origin master
 </tbody></table><br>
 <h3>Set Command</h3>
 <table width=780 style="border-spacing: 0px"><tbody>
-<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set &lt;x&gt;</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:1px" valign="top"><strong><code></code></strong></td><td style="padding-top:1px" valign="top">set x</td></tr>
-
-</table> </td> </tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set no&lt;x&gt;, &lt;x&gt;!</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:1px" valign="top"><strong><code></code></strong></td><td style="padding-top:1px" valign="top">unset x</td></tr>
-
-</table> </td> </tr>
+<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set &lt;x&gt;</code></strong></td><td style="padding-top: 1px" valign="top">Set x</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set no&lt;x&gt;, &lt;x&gt;!</code></strong></td><td style="padding-top: 1px" valign="top">Unset x</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set &lt;x&gt;=value</code></strong></td><td style="padding-top: 1px" valign="top">Assign x</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set &lt;x&gt;-=value</code></strong></td><td style="padding-top: 1px" valign="top">Remove value form &lt;x&gt;</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set all</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:1px" valign="top"><strong><code></code></strong></td><td style="padding-top:1px" valign="top">print all values</td></tr>
-
-</table> </td> </tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set &lt;x&gt;?</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:1px" valign="top"><strong><code></code></strong></td><td style="padding-top:1px" valign="top">print x</td></tr>
-
-</table> </td> </tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set all</code></strong></td><td style="padding-top: 1px" valign="top">Print all values</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:set &lt;x&gt;?</code></strong></td><td style="padding-top: 1px" valign="top">Print x</td></tr>
 
 </tbody></table><br>
 <h3>Set Command Operands</h3>
 <table width=780 style="border-spacing: 0px"><tbody>
 <tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>autoident, ai</code></strong></td><td style="padding-top: 1px" valign="top">Autoident (noai)</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>backup, bk</code></strong></td><td style="padding-top: 1px" valign="top">back file up before overwrite (nobackup)</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>ignorecase, ic</code></strong></td><td style="padding-top: 1px" valign="top">ignore case in search (noic)</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>number, nu</code></strong></td><td style="padding-top: 1px" valign="top">display line numbers (nonu)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>backup, bk</code></strong></td><td style="padding-top: 1px" valign="top">Back file up before overwrite (nobackup)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>ignorecase, ic</code></strong></td><td style="padding-top: 1px" valign="top">Ignore case in search (noic)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>number, nu</code></strong></td><td style="padding-top: 1px" valign="top">Display line numbers (nonu)</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>relativenumber, rnu</code></strong></td><td style="padding-top: 1px" valign="top">Display relative numbers (nornu)</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>shiftwidth, sw</code></strong></td><td style="padding-top: 1px" valign="top">number of spaces added when identing (8)</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>tabstop, ts</code></strong></td><td style="padding-top: 1px" valign="top">tab width (8)</td></tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>wrap</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:1px" valign="top"><strong><code></code></strong></td><td style="padding-top:1px" valign="top">wrap lines (wrap)</td></tr>
-
-</table> </td> </tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>wrapscan, ws</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:1px" valign="top"><strong><code></code></strong></td><td style="padding-top:1px" valign="top">search wraps around file (ws)</td></tr>
-
-</table> </td> </tr>
-<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>mouse=a</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:1px" valign="top"><strong><code></code></strong></td><td style="padding-top:1px" valign="top">mouse mode (use shift when selecting to copy to clipboard)</td></tr>
-
-</table> </td> </tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>shiftwidth, sw</code></strong></td><td style="padding-top: 1px" valign="top">Number of spaces added when indenting (8)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>tabstop, ts</code></strong></td><td style="padding-top: 1px" valign="top">Tab width (8)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>wrap</code></strong></td><td style="padding-top: 1px" valign="top">Wrap lines (wrap)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>wrapscan, ws</code></strong></td><td style="padding-top: 1px" valign="top">Search wraps around file (ws)</td></tr>
+<tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>mouse=a</code></strong></td><td style="padding-top: 1px" valign="top">Mouse mode (use shift when selecting to copy to clipboard)</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>linebreak</code></strong></td><td style="padding-top: 1px" valign="top">Do not break words</td></tr>
 
 </tbody></table><br>
@@ -1895,7 +1870,7 @@ git push origin master
 </tbody></table><br>
 <h3>Advanced</h3>
 <table width=780 style="border-spacing: 0px"><tbody>
-<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>tw=72 fo=cq wm=0</code></strong></td><td style="padding-top: 1px" valign="top">No automatic wraping, rewraping will wrap to 72</td></tr>
+<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>tw=72 fo=cq wm=0</code></strong></td><td style="padding-top: 1px" valign="top">No automatic wrapping, rewrapping will wrap to 72</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>tw</code></strong></td><td style="padding-top: 1px" valign="top">Controls the wrap width you would like to use</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>fo</code></strong></td><td style="padding-top: 1px" valign="top">Controls whether or not automatic text wrapping is enabled, depending whether or not the t flag is set</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>wm</code></strong></td><td style="padding-top: 1px" valign="top">Controls when to wrap based on terminal size</td></tr>
@@ -1932,7 +1907,7 @@ git push origin master
 </tbody></table><br>
 <h3>Splits</h3>
 <table width=780 style="border-spacing: 0px"><tbody>
-<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:vsp</code></strong></td><td style="padding-top: 1px" valign="top">Split verticaly</td></tr>
+<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>:vsp</code></strong></td><td style="padding-top: 1px" valign="top">Split vertically</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>ctrl-w, direction</code></strong></td><td style="padding-top: 1px" valign="top">Move to split</td></tr>
 
 </tbody></table><br>
@@ -1954,7 +1929,7 @@ git push origin master
 </tbody></table><br>
 <h3>Reformat Code</h3>
 <table width=780 style="border-spacing: 0px"><tbody>
-<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>=</code></strong></td><td style="padding-top: 1px" valign="top">Fix identation</td></tr>
+<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>=</code></strong></td><td style="padding-top: 1px" valign="top">Fix indentation</td></tr>
 
 </tbody></table><br>
 
@@ -2005,7 +1980,7 @@ sudo apt-get install oracle-java7-set-default</code></pre>
 <table width=780 style="border-spacing: 0px"><tbody>
 <tr><td style="padding-right: 10px;padding-top: 7px;width: 155px" valign="top"><strong><code>xrandr</code></strong></td><td valign="top"> <table style="border-spacing: 0px">
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:7px" valign="top"><strong><code>--output VGA1 --primary</code></strong></td><td style="padding-top:7px" valign="top">Changes primary screen</td></tr>
-<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>--output VGA1 --auto --pos 0x0 --output LVDS1 --auto --right-of VGA1</code></strong></td><td style="padding-top:0px" valign="top">To change their relative positions</td></tr>
+<tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>--output VGA1 --auto --pos 0x0</code></strong></td><td style="padding-top:0px" valign="top">'<code>--output LVDS1 --auto --right-of VGA1</code>' - To change their relative positions</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>-q</code></strong></td><td style="padding-top:0px" valign="top">List devices</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>--auto</code></strong></td><td style="padding-top:0px" valign="top">Reset</td></tr>
 <tr> <td style="width:1px;white-space:nowrap;padding-right:10px;padding-top:0px" valign="top"><strong><code>--output LVDS1 --off</code></strong></td><td style="padding-top:0px" valign="top">Turn off laptop screen</td></tr>
@@ -2029,7 +2004,7 @@ sudo mount -o loop &lt;path_to_iso&gt; /media/x</code></pre>
 </tbody></table><br>
 <h3>Wine</h3>
 <table width=780 style="border-spacing: 0px"><tbody>
-<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>winecfg</code></strong></td><td style="padding-top: 1px" valign="top">drives tab to set drive</td></tr>
+<tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>winecfg</code></strong></td><td style="padding-top: 1px" valign="top">Drives tab to set drive</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>wine explorer /desktop=abalaba,1024x768 app.exe</code></strong></td><td style="padding-top: 1px" valign="top">Run wine app in virtual desktop</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>reason on wine: down alt down</code></strong></td><td style="padding-top: 1px" valign="top">Open menu</td></tr>
 <tr><td width=155px></td><td></td></tr><tr><td style="padding-right: 10px;padding-top: 1px;width: 155px" valign="top"><strong><code>regedit</code></strong></td><td style="padding-top: 1px" valign="top">Registry editor</td></tr>
@@ -2069,14 +2044,14 @@ sudo mount -o loop &lt;path_to_iso&gt; /media/x</code></pre>
 
 </tbody></table><br>
 <h3>Repackaging A Linux Install Iso</h3>
-<p># Mount ISO</p>
-<pre><code>mkdir -p /mnt/linux
+<pre><code># Mount ISO
+mkdir -p /mnt/linux
 mount -o loop /tmp/linux-install.iso /mnt/linux</code></pre>
-<p># Copy contents to a working directory</p>
-<pre><code>cd /mnt/
+<pre><code># Copy contents to a working directory
+cd /mnt/
 tar -cvf — Linux | (cd /var/tmp && tar -xf — )</code></pre>
-<p># Make your changes and repackage (on debian use genisoimage). -c passes the name of the file that will be created</p>
-<pre><code>cd /var/tmp/linux
+<pre><code># Make your changes and repackage (on Debian use genisoimage). -c passes the name of the file that will be created
+cd /var/tmp/linux
 mkisofs -o ../your-new.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -J -R -V Your Disk Name Here .</code></pre>
 <h3>Gdb</h3>
 <table width=780 style="border-spacing: 0px"><tbody>

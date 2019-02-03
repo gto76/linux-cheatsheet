@@ -6,5 +6,5 @@ Comprehensive Linux Cheatsheet
 
 ### How to generate `'index.html'` from `'linux_cheatsheet.txt'`:
 ```bash
-$ ./parse.py linux-cheatsheet.txt > index.html
+$ ./parse.py > index.html
 ```

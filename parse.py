@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
-# Usage: parse.py filename
-# 
+# Usage: parse.py [filename]
+# Converts text to html file.
 
 from collections import namedtuple
 import sys
@@ -9,6 +9,7 @@ import re
 
 DEBUG = False
 
+FILENAME = 'linux-cheatsheet.txt'
 TEMP = 'web/template.html'
 TEMP_ANCHOR = '<!-- INSERT_HERE -->'
 BATCH_SEPARATOR = "<tr><td width=155px></td><td></td></tr>"
@@ -25,7 +26,8 @@ SMALL_TOP_PADDING = 1
 def main():
     # Paragraph and code block do not contain ' — ' and begin at the start of
     # line. Code block is bounded by '```'
-    lines = [convert_specials(a) for a in read_file(sys.argv[1])]
+    filename = FILENAME if len(sys.argv) < 2 else sys.argv[1]
+    lines = [convert_specials(a) for a in read_file(filename)]
     lines = lines[SKIP_LINES:]
     out = []
     table = []
