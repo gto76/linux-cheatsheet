@@ -2,7 +2,7 @@ Comprehensive Linux Cheatsheet
 ==============================
 ![Penguin Colony](web/penguins.jpg)
 
-GNOME
+Gnome
 -----
 ```
 Ctrl+Alt T — Terminal
@@ -25,21 +25,21 @@ Super PgUp/PgDn — Switch workspace
 Middle mouse button — Paste selected text
 ```
 
-### NAUTILUS/NEMO
+### Nautilus/Nemo
 ```
 Ctrl L — Location, show path
 Ctrl+Shift N — New folder
 Ctrl H — Show hidden files
 ```
 
-### GEDIT
+### Gedit
 ```
 Ctrl G — Find next
 Ctrl+Shift G — Find previous
 Ctrl+Shift K — Clear highlights
 ```
 
-TERMINAL
+### Terminal
 ```
 Ctrl+Shift C — Copy
 Ctrl+Shift V — Paste
@@ -51,7 +51,7 @@ Ctrl D — Close terminal
 Ctrl S — Scroll lock
 ```
 
-### BASH
+### Bash
 **Keys when in emacs mode. You can switch to `vi` mode with `set -o vi` command.**
 ```
 Ctrl C — Interrupt, erase line
@@ -68,7 +68,7 @@ Ctrl P — Show last command (same as up arrow)
 ```
 
 
-PACKAGES
+Packages
 --------
 ```
 dpkg — Low level package manager for Debian.
@@ -115,7 +115,7 @@ update-alternatives — Maintains symbolic links determining default commands.
 unattended-upgrade — Automatic installation of security upgrades.
 ```
 
-### COMMANDS
+### Commands
 ```
 apropos <cmd> — Searches the manual page names and descriptions (use quotes 
         for phrases).
@@ -127,7 +127,7 @@ which <cmd> — Locates only the binary of a command.
 wtf — Translates acronyms and filename suffixes.
 ```
 
-### INSTALL MANTRA
+### Install Mantra
 ```
 ./configure --help
 ./configure
@@ -136,7 +136,7 @@ sudo make install
 ```
 
 
-GENERAL
+General
 -------
 ```
 su — Switches user.
@@ -210,7 +210,7 @@ make — Utility that maintains groups of programs.
     -B — Unconditionally makes all targets.
 ```
 
-### FILES
+### Files
 ```
 ls  -d — List directory names instead of contents
     -S — Sort by size 
@@ -277,7 +277,7 @@ dialog — Display dialog box from shell script
 watch — Execute command periodically
 ```
 
-### ARCHIVES
+### Archives
 ```
 dtrx  <archive> — Universal archive extractor
 tar — xvzf <file>.tar.gz (.tgz) — Decompress and detar
@@ -291,7 +291,7 @@ unrar  e — Extract files from rar archive
 zcat — Cats gziped file
 ```
 
-### TERMINAL MULTIPLEXERS
+### Terminal Multiplexers
 ```
 screen — Switch between multiple virtual terminals (useful in ssh). Prefix for
     a command is `Ctrl a`.
@@ -321,7 +321,7 @@ tmux — Terminal multiplexer, better screen. Prefix for a command is `Ctrl b`.
 ```
 
 
-BASH
+Bash
 ----
 ```
 "$x" — ALWAYS PUT DOUBLE QUOTES AROUND VARIABLE!!!!!!!!!!!!!!! 
@@ -382,7 +382,7 @@ help <builtin> — Display information about builtin command
 wait — Wait for all background processes to end
 ```
 
-### SAFETY
+### Safety
 ```
 set — -e — Exit if any command fails
     -u — Exit if referencing undefined variable
@@ -390,14 +390,14 @@ set — -e — Exit if any command fails
 IFS=$'\n\t' — Remove space from the default Internal Field Separator
 ```
 
-### HISTORY
+### History
 ```
 sudo !! — Run the last command as root 
 ␣<cmd> — Execute a command without saving it in the history
 !<cmd> — Run last command that starts with cmd
 ```
 
-### REDIRECTIONS
+### Redirections
 ```
 <cmd> 2> /dev/null — Redirect error output to `null`
 <cmd> &> /dev/null — Redirect both standard and error output to `null`
@@ -405,7 +405,7 @@ sudo !! — Run the last command as root
 <cmd> 2>&1 | less — Add stderr to stdout and print it with less (useful for gcc)
 ```
 
-### ARRAYS AND LINES
+### Arrays And Lines
 **Reads line by line from variable. To preserve spaces use `IFS=`.**
 ```
 while IFS= read -r line; do
@@ -421,7 +421,7 @@ ${#name[subscript]} — Length  of the element
 ${#name[@]} — Length  of the array
 ```
 
-### ALIASES AND FUNCTIONS
+### Aliases And Functions
 ```
 alias — Print all aliases
     <name> — Print alias
@@ -435,10 +435,10 @@ declare -f — Print functions
 ```
 
 
-TEXT
+Text
 ----
 
-### PRINT
+### Print
 ```
 head — -n-<num_of_lines> — Print all lines but the last n
     -c <num_of_chars> — Print first c characters
@@ -458,7 +458,7 @@ less  &<patt> — Display only lines with pattern
 wc — Count lines, words and characters
 ```
 
-### EDIT
+### Edit
 ```
 sudo -e <file> — Edit file as sudo
 tr <from> <to> — Translate characters
@@ -499,7 +499,7 @@ expand — Convert tabs to spaces
     -i — Do not convert tabs after non blanks
 ```
 
-### DIFF
+### Diff
 ```
 diff — -u <files> — Unified format
     --brief -r — Compare two directory trees
@@ -511,7 +511,8 @@ patch — Apply a diff file to original
     diff -u <old_file> <new_file> > patch.diff — Create patch
 ```
 
-### SEARCH
+### Search
+```
 grep <patt> <file> — -v — Inverse
     -n — Line numbers 
     -w — Whole word 
@@ -529,9 +530,10 @@ grep <patt> <file> — -v — Inverse
     --line-buffered — Processes input line by line instead of in bigger chunks
 look — Display lines beginning with a given string
 strings — Print all text parts of binary file
+```
 
-
-### CONVERT
+### Convert
+```
 todos, fromdos — Convert line endings form/to windows format (package tofrodos)
 enscript — Converts text files to postscript, rtf, HTML
 gs — Ghostscript: postscript and PDF language interpreter and previewer
@@ -541,9 +543,10 @@ libreoffice — New Openoffice
 figlet — Display large characters made up of ordinary screen characters (Ascii art)
 toilet — Similar (Ascii art)
 cproto — Generates C function prototypes (declarations)
+```
 
-
-### EDITORS
+### Editors
+```
 nano — Simple text editor.
     /etc/nanorc — Config file.
     /usr/share/nano/<lang>.nanorc — Syntax highlight files.
@@ -551,12 +554,12 @@ nano — Simple text editor.
 fte — Cool text editor with CUA (IBM)-shortcuts
 diakonos — Simple terminal text editor with ctrl-c for copy
 pyroom — Distraction free writing (gui)
+```
 
 
-=======
-### NETWORK
-=======
-
+Network
+-------
+```
 whois — Info about domain
 host <ip/hostname> — DNS lookup utility
 nslookup — Same interactively
@@ -592,9 +595,10 @@ ethtool eth0 — Show status of eth0
     -s — Change settings (speed, duplex,...)
 ss -tupl — List internet services on a system
     -tuo — List active connections to/from system
+```
 
-
-### WIRELESS
+### Wireless
+```
 iwconfig — Sets the wireless configuration options basic to most wireless devices
 iwlist wlan0 — <option> — Displays current status information of a device, more detailed then iwconfig
         scan (sudo) — List wireless networks in range 
@@ -606,12 +610,12 @@ iw dev wlan0 — link — Show link status of wlan0
         set biterates <standard> — Manually set interface speed
         scan (sudo) — List wireless networks in range 
 wavemon — Monitor wireless connection link quality
+```
 
 
-========
-### INTERNET
-========
-
+Internet
+--------
+```
 mutt — Mail client
 sftp — Secure ftp
 sshd — (openssh-server) ssh server deamon, on Windows service is named 'CYGWIN sshd'
@@ -639,9 +643,10 @@ noip2 — Dynamic dns update client
 rdesktop — Remote Desktop Protocol client
 tin, nn — Usenet client
 nrss — Rss feed reader
+```
 
-
-### BROWSERS
+### Browsers
+```
 lynx — Terminal web browser 
     -cmd_log=<file> — Write keystrokes to script
     -cmd_script=<file> — Read keystrokes from script
@@ -657,9 +662,9 @@ lynx — Terminal web browser
     ctrl+p — Previous line
     crrl+n — Next line
 elinks — Another web browser (has menus)
+```
 
-
-### HACKING
+### Hacking
 nmap — -sP 192.168.1.1-3 — Network scanning
     192.168.1.3 -p100-139 — Port scanning
     -O 192.168.1.3 (sudo) — Scanning os 
@@ -678,7 +683,7 @@ ip link set eth0    promisc on — Set network interface to promiscuous mode
 
 
 ======
-### SYSTEM
+### System
 ======
 
 meta, system info — In cinnamon
@@ -699,7 +704,7 @@ busybox <cmd> — Combines tiny versions of many common UNIX utilities into a si
 mono — .NET support
 
 
-### USERS
+### Users
 users — Prints logged in users
 who — Logged in users, more data
 w — Logged in users, also what are they running
@@ -738,7 +743,7 @@ rkhunter -c — Checks if it can find any rootkits under the system
 ntfsundelete — Undelete files on NTFS partition 
 
 
-### LOGGING
+### Logging
 last — When various users have logged in or out. This includes information on when the computer was rebooted.
 lastlog — Displays a list of users and what day/time they logged into the 
     system.  
@@ -750,7 +755,7 @@ logger — Makes entries in the system log
 zeitgeist — Activity logger
 
 
-### LOAD
+### Load
 tload — 'graphic' representation of system load
 top — Show processes by resource consumption
     <, > — Change resource
@@ -764,7 +769,7 @@ time <cmd> — Time a execution of a command
 perf — Profiler
 
 
-### TRACING
+### Tracing
 auditd — System call auditing (package)
 ausearch — Querys the audit logs
 autrace — Traces a specific process
@@ -784,7 +789,7 @@ lsmod — Show which kernel modules (drivers) are loaded
 modinfo <module> — Get more information about kernel module
 
 
-### HARDWARE
+### Hardware
 lshw (sudo) — List all hardware 
 lspci [-tv] — Show pci info
 lsusb [-tv] — Show usb info
@@ -799,7 +804,7 @@ sensors — (lm-sensors) hardware monitoring tool, temperature, fan speed
 pwmconfig — (fancontrol) set fan speed
 
 
-### TERMINAL
+### Terminal
 tty — Print the file name of the terminal connected to standard input
 stty — Change and print terminal line settings
 openvt —  run a program on a next available tty
@@ -828,7 +833,7 @@ echo -en "\e]PC7373C9" — Change blue color in tty (first numeral after P means
 
 
 =========
-### PROCESSES
+### Processes
 =========
 
 ps --forest — View hierarchical view of processes
@@ -853,7 +858,7 @@ snice — Works very similarly to skill
 pmap — Report memory map of a process (mapped file)
 
 
-### JOBS
+### Jobs
 Ctrl z — Put job into background
 jobs — Prints currently running job
 bg <job_id> — Put job in background
@@ -879,7 +884,7 @@ cron — Daemon that executes scheduled commands
 anacron — Like cron but it catches up with tasks next time the computer gets turned on
 
 
-### SERVICES   
+### Services   
 service — Allows you to start, stop or restart a service (it runs a script in /etc/init.d folder)
     -f sshd — Restart the ssh server
     httpd status — Get status of apache
@@ -900,10 +905,10 @@ runlevel — Output previous and current runlevel
 
 
 ==========
-### MULTIMEDIA
+### Multimedia
 ==========
 
-### AUDIO
+### Audio
 alsamixer — Set audio level (curses)
 amixer — Set audio levels (command line)
 rmmod pcspkr (sudo) — Disable pc-speaker, beep 
@@ -923,7 +928,7 @@ sound-juicer — Cd ripper
 xfburn — Cd burner
 traverso — Simple daw
 
-### BITMAP
+### Bitmap
 display — Displays an image
 montage — Creates a montage from images
     <input_file/s> -set label '%t' <output_file/s> — Labels images
@@ -938,7 +943,7 @@ gnuplot — Interactive plotter: plot [-10:10] sin(x)
     plot <file>.dat — Plot data from dat file
 fbi — Display images inside tty
 
-### VIDEO
+### Video
 ffmpeg -i <file_in> <file_out> — Video and audio format converter. Has been replaced by avconv
 avconv -i <file_in> <file_out> — Video and audio format converter (libav-tools)
 
@@ -952,7 +957,7 @@ aview, asciiview — ASCII art image viewer and video player
 ## AWESOME DEBIAN FILES ##
 ##########################
 
-### BASH
+### Bash
 ~/.bashrc — Executed at every shell startup, user specific
 /etc/bash.bashrc — Executed at every shell startup, all users
 ~/.profile, .bash_profile, .bash_login — First file found executed at login, user specific 
@@ -960,11 +965,11 @@ aview, asciiview — ASCII art image viewer and video player
 /etc/rc.local — Last startup script executed, runs command as su
 
 
-### HOME
+### Home
 ~/.Xmodmap — Keyboard map
 
 
-### BINS
+### Bins
 /bin — Key programs like ls, cat, bash, ...
 /sbin — Key programs for system management like ifconfig, mkfs, fdisk, ...
 /usr/bin — Distribution managed programs
@@ -989,7 +994,7 @@ GENERAL CONFIG:
 /etc/apt  /sources.list — List of places where to look for packages
 
 
-### SERVICES
+### Services
 /etc/init/, ~/.init/  Init — Upstart init daemon job configuration
 /etc/init.d — Folder with service scripts, that get executed at start and end
     /halt — Runs at the end 
@@ -1004,14 +1009,14 @@ GENERAL CONFIG:
 /etc/syslog.conf — Configuration information for syslogd 
 
 
-### NETWORK
+### Network
 /etc/resolv.conf — Dns information
 /etc/sysconfig  /networking/devices/ifcfg-eth0 — Use ifcfg to configure a particular interface
 /etc/services — List of internet services with their port numbers
 /etc/NetworkManager  /NetworkManager.conf — Configuration file
 
 
-### PROC 
+### Proc 
 Various information about the system.
 /proc/cpuinfo — Information about the CPU
 /proc/modules —  information about which kernel-modules are loaded on your system
@@ -1027,19 +1032,19 @@ Various information about the system.
 /proc/net/wireless — Wireless connection info
 
 
-### USR
+### Usr
 "Unix System Resources"
 /usr/lib  /jvm — Java JREs and JDKs
 /usr/share  /man — Man pages
     /bash-completion — Bash completion functions
 
 
-### SBIN
+### Sbin
 The "system-administrator's bin file".
 Hosts programs that would be in /bin if they didn't have "root-only" access permissions.
 
 
-### VAR
+### Var
 "Variable"
 /var/log — System logs in here
     /auth.log — Logins
@@ -1047,7 +1052,7 @@ Hosts programs that would be in /bin if they didn't have "root-only" access perm
 /var/spool — Contains data which is awaiting some kind of later processing
 
 
-### BOOT
+### Boot
 Kernels.
 /boot/grub/menu.lst — Grub configuration file
 /etc/default/grub — Grub configuration file
@@ -1086,7 +1091,7 @@ git push origin master
 # Sometimes also: git push --set-upstream origin master
 ```
 
-### REMOTE
+### Remote
 git remote  update — Get info about state of remote
     show origin — Print address of the origin
     set-url origin <origin> — `git@github.com:<user>/<repo>.git` - Change the url of origin, ssh key needed; `https://www.github.com/<user>/<repo>.git` - Same, but withouth key.
@@ -1094,12 +1099,12 @@ git status -uno — Check if everything up-to-date
 git fetch; git checkout <branch> — Checkout remote branch
 
 
-### TAGS
+### Tags
 git push --tags — Push tags
 git fetch --tags — Pulling tags (automatically if on the same branch and there is a new commit?)
 
 
-### UNDO
+### Undo
 git reset  --hard HEAD~1 — Delete last commit and all of its changes
     HEAD~1 — Delete last commit but keep your changes
 
@@ -1128,7 +1133,7 @@ git config -l — Print repos configuration settings
 git config core.filemode false — Ignores executable bit of the files
 
 
-### CHECKOUT
+### Checkout
 git log > ../gitLog — First save log to file
 git checkout <hash> — Then checkout previous versions
 git checkout head — Return to head
@@ -1138,7 +1143,7 @@ GITHUB MD FORMAT:
 ![Alt text](/doc/basket-stats.png?raw=true "<Description>") — Insert image
 
 
-### BISECT
+### Bisect
 git bisect start — 
 git bisect bad — Tell git that current version is bad
 git bisect good v25.0.2 — Tell git the last good version you know about.
@@ -1147,7 +1152,7 @@ git bisect bad/good — This will continue until the commit that introduced the 
 git bisect reset — Exit bisect mode
 
 
-### TOOLS
+### Tools
 gitk — Repo explorer
 gitg — A bit nicer version
 tig — Text based repo explorer
@@ -1184,13 +1189,13 @@ ctrl+v — Select visual box (block select)
 :sav — Save file as and keep new file open (save as)
 
 
-### HELP
+### Help
 ctrl+] — Follow link
 ctrl+o — Go back
 :q — Exit help  
 
 
-### MOVEMENT
+### Movement
 e — End of word
 E — End of WORD
 W — Start of WORD
@@ -1204,7 +1209,7 @@ ctrl+i — Go to next location
 % — Jump to matching bracket
 
 
-### LINES
+### Lines
 0 — Start of line
 ^,_ — First non-blank of line
 +,- — First non-blank of next/previous line
@@ -1225,7 +1230,7 @@ ctrl E,Y — One more line at bottom/top
 z Enter, z., z- — Reposition line with cursor at top/middle/bottom
 
 
-### SEARCH
+### Search
 *,# — Search forward/backward for exact word under cursor
 g*,g# — Same, but even when word is embedded
 % — Find match of current brace, quote,...
@@ -1235,7 +1240,7 @@ tx,Tx — Same, but to one char before x
 :%s/old/new/gc — Replace, like sed, c means with conformations
 
 
-### MARKS
+### Marks
 '" — Move to position of last edit of file
 `. — Move to last change in file
 `0 — Position where you last exited vim
@@ -1247,13 +1252,13 @@ ctrl+u — Delete line
 ctrl+w — Delete previous word
 
 
-### MACROS
+### Macros
 q<x> — Record actions (macro) into x
 q — Stop recording macro
 @<x> — Execute x (macro)
 
 
-### REGISTERS
+### Registers
 "ayy — Copy line into register a
 "ap — Paste register a
 :reg — Access all registers
@@ -1309,20 +1314,20 @@ AUTOMATIC LINEBRAKE (WRAP):
 gq — Formats (wraps) selected text 
 gqq — Format current line
 :set tw=72 — Set text width
-### ADVANCED
+### Advanced
 tw=72 fo=cq wm=0 — No automatic wrapping, rewrapping will wrap to 72
 tw — Controls the wrap width you would like to use
 fo — Controls whether or not automatic text wrapping is enabled, depending whether or not the t flag is set
 wm — Controls when to wrap based on terminal size
 
 
-### COLORSCHEME
+### Colorscheme
 :colorscheme — darkblue, torte — Nice, darker
     slate, default — Less contrast
 :highlight Normal ctermbg=grey — Set light background
 
 
-### SPELLCHECK
+### Spellcheck
 :set spell spelllang=en_us — Turn spellcheck on
 :set nospell — Turn off
 :setlocal spell spelllang=en_us — Set dictionary
@@ -1331,7 +1336,7 @@ z= — Show suggestions for misspelled word
 [s — Go to previous misspelled word
 
 
-### TABS
+### Tabs
 :tabe <file> — Open new tab
 gt, gT — Go to next/previous tab
 ctrl+pgup/pgdn — Switch tab
@@ -1339,21 +1344,21 @@ vim -p — Open one tab page per file
 ZZ — Save and close tab (same as :wq)
 
 
-### SPLITS
+### Splits
 :vsp — Split vertically
 ctrl-w, direction — Move to split
 
 
-### AUTOCOMPLETE
+### Autocomplete
 ctrl+n — Show autocomplete suggestions
 
 
-### HEXDUMP
+### Hexdump
 :%!xxd — Convert to hex
 :%!xxd -r — Convert back
 
 
-### VUNDLE
+### Vundle
 :PluginInstall — Install plugins
 
 
@@ -1366,11 +1371,11 @@ REFORMAT CODE:
 ## MISC ##
 ##########
 
-### PIRATEBAY
+### Piratebay
 torrents.thepiratebay.sx/7532474/Cabin.torrent — Download torrent file
 
 
-### JAVA
+### Java
 javac -cp <path>:<path>... — Tell Java where libraries are located
 java -Xmx6g myprogram — Reserve 6 giga for process
     -jar <jar> — Execute jar
@@ -1403,11 +1408,11 @@ sudo apt-get install oracle-java7-installer
 sudo apt-get install oracle-java7-set-default
 ```
 
-### FIREFOX
-### aboutconfig — Layout.css.devPixelsPerPx default zoom (-1.0)
+### Firefox
+### Aboutconfig — Layout.css.devPixelsPerPx default zoom (-1.0)
 
 
-### XRANDR
+### Xrandr
 xrandr  --output VGA1 --primary — Changes primary screen 
     --output VGA1 --auto --pos 0x0  — `--output LVDS1 --auto --right-of VGA1` - To change their relative positions
     -q — List devices
@@ -1422,7 +1427,7 @@ sudo mkdir /media/x
 sudo mount -o loop <path_to_iso> /media/x
 ```
 
-### ECLIPSE
+### Eclipse
 ctrl+1 — Quick fix
 alt+shift+s — Source submenu
 ctrl+F7, esc — Close pop-up console window
@@ -1431,20 +1436,20 @@ F3 — Goto definition
 objectaid — UML plugin 
 
 
-### WINE
+### Wine
 winecfg — Drives tab to set drive
 wine explorer /desktop=abalaba,1024x768 app.exe — Run wine app in virtual desktop
 reason on wine: down alt down — Open menu
 regedit — Registry editor
 
 
-### CYGWIN
+### Cygwin
 [cygwin] ssh-host-cofig —  
 [command prompt] net start sshd — 
 [any] ssh <windows_username - CASE MATTERS!>@<host> — Run sshd (use windows password)
 
 
-### GOLANG
+### Golang
 go  build       — Compile packages and dependencies
     clean       — Remove object files
     env         — Print Go environment information
@@ -1483,7 +1488,7 @@ cd /var/tmp/linux
 mkisofs -o ../your-new.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -J -R -V Your Disk Name Here .
 ```
 
-### GDB
+### Gdb
 gdb <cmd> — Start gdb
 run <arguments>  — Start debugging
 run < <file> — Run with piped input
@@ -1491,10 +1496,10 @@ up — Follow trace
 print <variable> — Print variable
 
 
-### COREDUMP
+### Coredump
 ulimit -c unlimited — Set core file limit to unlimited
 gdb <cmd> core — Debug core file with gdb
 
 
-### CHROME
+### Chrome
 F6, ctrl+l, alt+d — Go to address bar
