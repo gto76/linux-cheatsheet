@@ -284,11 +284,11 @@ find <dir>
 ```
 
 ```bash
-locate <regex>                # Similar as `find` but using index
+locate <regex>                # Similar as `find` but using index. Run `sudo updatedb` to
+                              # update index.
     -i                        # Ignore case
     --regex                   # Interprets all patterns as extended regex
     -0 | xargs -0 <cmd>       # Sends found files to a command as parameters.
-updatedb (sudo)               # Update locate index 
 ```
 
 ### Misc
