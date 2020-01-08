@@ -29,7 +29,7 @@ apt-get                     # Advanced Package Tool built on top of 'dpkg'. New 
     purge     <package>     # Removes package and its configurations. Run 'apt-get autoremove'
                             # after to remove all dependencies that are not needed anymore.
     autoremove              # Removes unneeded packages.
-    source    <package>      # Downloads code.
+    source    <package>     # Downloads code.
     build-dep <package>     # Installs the build dependencies.
     --yes                   # Answers with 'yes' to most questions (Except the ones that can
                             # have potentially harmful consequences).
