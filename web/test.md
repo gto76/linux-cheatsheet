@@ -218,7 +218,7 @@ make                   # Utility that maintains groups of programs.
 Files
 -----
 ```bash
-ls  
+ls [<dir>, ...] 
     -d            # List directory names instead of contents
     -S            # Sort by size 
     -t            # Sort by time
@@ -229,7 +229,7 @@ ls
 ```
 
 ```bash
-cp  
+cp <file> <file> [..., <dir>] 
     -i            # Interactive (Prompts before overwrite)
     -v            # Verbose (Explains what is being done)
     -R            # Copy directories recursively
@@ -238,7 +238,7 @@ cp
 ```
 
 ```bash
-rm  
+rm <file> [...] 
     -i            # Interactive (Prompts before every removal)
     -v            # Verbose (Explains what is being done)
     -f            # Force remove (Does not prompt, useful if `rm` is aliased with `-i`)
