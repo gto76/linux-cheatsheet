@@ -140,29 +140,29 @@ sh                  # Runs command interpreter (shell). Can run a script even if
 ```
 
 ```bash
-bash             # Runs bash command interpreter (shell).
-    -c           # Reads commands from arguments instead of `stdin`.
-    -n <script>  # Checks script for errors.
-    -x           # Prints commands before execution. Useful for debugging.
+bash                # Runs bash command interpreter (shell).
+    -c              # Reads commands from arguments instead of `stdin`.
+    -n <script>     # Checks script for errors.
+    -x              # Prints commands before execution. Useful for debugging.
 ```
 
 ```bash
-gcc <files>      # Gnu C compiler. Run `g++` for C++ code.
-    -w           # Supresses warnings (Only prints errors).
-    -Wall        # All warnings.
-    -g           # Compile for debugging.
-    -std=<std>   # Sets the standard. Suported standards for C are:  
-                 # `c90`, `gnu90`, `c99`, `gnu99`, `c11` and `gnu11`.  
-                 # Suported standarts for C++ are:  
-                 # `c++98`, `gnu++98`, `c++11` and `gnu++11`.  
-                 # `gnu90` and `gnu++98` are the default options.
-    -O<level>    # Optimization level. `0`: Reduce compilation time (default),
-                 # `1-3`: - Level of optimization, `s` - Optimize for size, `g` - Optimize
-                 # debugging experience.
+gcc <files>         # Gnu C compiler. Run `g++` for C++ code.
+    -w              # Supresses warnings (Only prints errors).
+    -Wall           # All warnings.
+    -g              # Compile for debugging.
+    -std=<std>      # Sets the standard. Suported standards for C are:  
+                    # `c90`, `gnu90`, `c99`, `gnu99`, `c11` and `gnu11`.  
+                    # Suported standarts for C++ are:  
+                    # `c++98`, `gnu++98`, `c++11` and `gnu++11`.  
+                    # `gnu90` and `gnu++98` are the default options.
+    -O<level>       # Optimization level. `0`: Reduce compilation time (default),
+                    # `1-3`: - Level of optimization, `s` - Optimize for size, `g` - Optimize
+                    # debugging experience.
 ```
 
 ```bash
-run-parts <dir>  # Runs all scripts or programs in a directory.
+run-parts <dir>     # Runs all scripts or programs in a directory.
 ```
 
 ```bash
@@ -218,49 +218,49 @@ make                   # Utility that maintains groups of programs.
 Files
 -----
 ```bash
-ls  -d              # List directory names instead of contents
-    -S              # Sort by size 
-    -t              # Sort by time
-    -1              # One file per line
-    ./*             # Ls one level deep
-    -i              # Get inode number of file (file id). Use `sudo find / -inum <number>` to find all 
-                    # links that point to same file.
+ls  -d            # List directory names instead of contents
+    -S            # Sort by size 
+    -t            # Sort by time
+    -1            # One file per line
+    ./*           # Ls one level deep
+    -i            # Get inode number of file (file id). Use `sudo find / -inum <number>` to find all 
+                  # links that point to same file.
 ```
 
 ```bash
-cp  -i              # Interactive (Prompts before overwrite)
-    -v              # Verbose (Explains what is being done)
-    -R              # Copy directories recursively
-    -p              # Preserve mode, ownership and timestamps
-    --preserve=all  # Also preserves context, links and xattr
+cp  -i            # Interactive (Prompts before overwrite)
+    -v            # Verbose (Explains what is being done)
+    -R            # Copy directories recursively
+    -p            # Preserve mode, ownership and timestamps. `--preserve=all` also preserves
+                  # context, links and xattr
 ```
 
 ```bash
-rm  -i              # Interactive (Prompts before every removal)
-    -v              # Verbose (Explains what is being done)
-    -f              # Force remove (Does not prompt, useful if `rm` is aliased with `-i`)
-    -R              # Removes directories and their content recursively 
+rm  -i            # Interactive (Prompts before every removal)
+    -v            # Verbose (Explains what is being done)
+    -f            # Force remove (Does not prompt, useful if `rm` is aliased with `-i`)
+    -R            # Removes directories and their content recursively 
 ```
 
 ```bash
-mkdir -p            # Make parents if needed
+mkdir -p          # Make parents if needed
 ```
 
 ```bash
-ln <file> <link>    # Makes links to the files
-    -s              # Makes symbolic link. If you want to use relative paths you must be in 
-                    # links directory !!!!!!!!!!!!!!!!!!!!!!
+ln <file> <link>  # Makes links to the files
+    -s            # Makes symbolic link. If you want to use relative paths you must be in 
+                  # links directory !!!!!!!!!!!!!!!!!!!!!!
 ```
 
 ```bash
-df  -h              # Displays humanly readable free disk space
-du  -s <dir>        # Directory size
+df  -h            # Displays humanly readable free disk space
+du  -s <dir>      # Directory size
 ```
 
 ```bash
-mc                  # Midnight commander
-    Alt o           # Open parent dir in another panel
-    Ctrl o          # Switch to bash
+mc                # Midnight commander
+    Alt o         # Open parent dir in another panel
+    Ctrl o        # Switch to bash
 ```
 
 ### Search
