@@ -215,7 +215,8 @@ make                   # Utility that maintains groups of programs.
 ```
 
 
-### Files
+Files
+-----
 ```bash
 ls  -d   # List directory names instead of contents
     -S   # Sort by size 
@@ -256,7 +257,7 @@ mc            # Midnight commander
     Ctrl o    # Switch to bash
 ```
 
-#### Search:
+### Search
 ```bash
 find <dir>  -name <file>      # Search by name
     -regex <regex>            # Use regex for name search
@@ -283,7 +284,7 @@ locate <regex>  — Similar as `find` but using index
 updatedb (sudo) — Update locate index 
 ```
 
-#### Misc:
+### Misc
 ```bash
 md5sum — Prints md5 sum hash of a file
 read — Read single line from standard input 
