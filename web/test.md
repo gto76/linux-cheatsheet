@@ -306,10 +306,12 @@ gpg                   # Decrypt file with password
 mktemp                # Create a temporary file or directory in `/tmp` and returns it's name.
 rename <sed> <files>  # Renames multiple files using `sed` syntax (s/<from>/<to>)
 rsync                 # A fast, versatile, remote (and local) file-copying tool
-    -Hbaz -e ssh — `<src_dir> <user>@<host>:<dest_dir>`  # Backs up the 'src-dir':
-                      # `-H` preserves hard links, `-b` renames preexisting destination files (back up), 
-                      # `-a` preserve everything except hard links and `-z` compresses.
+    -H                # Preserves hard links
+    -b                # Renames preexisting destination files (back up)
+    -a                # Preserve everything except hard links
+    -z                # compresses
     cmp               # Compares two files, similar to diff but also for binaries
+                      # -Hbaz -e ssh — `<src_dir> <user>@<host>:<dest_dir>` backs up the 'src-dir'.
 stat <file>           # Displays file's status
     -c%X              # Time of last modification of the file 
 readlink -f           # Follow link recursively and print files path
