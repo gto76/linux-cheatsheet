@@ -5,12 +5,14 @@ Awesome Terminal Commands
 Packages
 --------
 
+### Dpkg
 ```bash
 dpkg                        # Low level package manager for Debian.
     -l                      # Lists installed packages.
     -i <package> (sudo)     # Installs package from a package file.
 ```
 
+### Apt
 ```bash
 apt-get                     # Advanced Package Tool built on top of 'dpkg'. New command called
                             # simply 'apt' is also available. It merges the functionalities of
@@ -56,14 +58,9 @@ aptitude                    # Enables package browsing (skin for apt-get).
     search <package>        # Package search.
 ```
 
+### Misc
 ```bash
 winetricks                  # Installs wine applications.
-```
-
-```bash
 update-alternatives         # Maintains symbolic links determining default commands.
-```
-
-```bash
 unattended-upgrade          # Automatic installation of security upgrades.
 ```
