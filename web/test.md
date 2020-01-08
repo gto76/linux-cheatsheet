@@ -126,14 +126,14 @@ expr <expr>    # Evaluates passed expression.
 ```
 
 ```bash
-bc             # Evaluates input. It's basically a calculator, but also provides some 
+bc [<file>]    # Evaluates input. It's basically a calculator, but also provides some 
                # control commands.
     echo 1 + 1 | bc          # Prints `2`.
     echo "scale=5;3/4" | bc  # Prints `.75000`.
 ```
 
 ```bash
-sh             # Runs command interpreter (shell). Can run a script even if not executable.
+sh                  # Runs command interpreter (shell). Can run a script even if not executable.
     -c '<commands>' # Starts new non-interactive shell and reads commands from 
                     # arguments instead of `stdin`. To append lines to system configuration 
                     # file run: `sudo sh -c 'echo "<text>" >> <file>'`
@@ -212,4 +212,99 @@ make                   # Utility that maintains groups of programs.
     -q                 # Doesn't run any commands, just returns `0` exit code if everything is
                        # up to date or non-zero otherwise.
     -B                 # Unconditionally makes all targets.
+```
+
+
+### Files
+```bash
+ls  -d   # List directory names instead of contents
+    -S   # Sort by size 
+    -t   # Sort by time
+    -1   # One file per line
+    ./*  # Ls one level deep
+    -i   # Get inode number of file (file id). Use `sudo find / -inum <number>` to find all 
+         # links that point to same file.
+```
+
+```bash
+cp  -i   # Interactive (Prompts before overwrite)
+    -v   # Verbose (Explains what is being done)
+    -R   # Copy directories recursively
+    -p   # Preserve mode, ownership and timestamps
+    --preserve=all  # Also preserves context, links and xattr
+```
+
+```bash
+rm  -i   # Interactive (Prompts before every removal)
+    -v   # Verbose (Explains what is being done)
+    -f   # Force remove (Does not prompt, useful if `rm` is aliased with `-i`)
+    -R   # Removes directories and their content recursively 
+```
+
+```bash
+mkdir -p      # Make parents if needed
+ln            # Makes links to the files
+    -s <file> <link>  # Makes symbolic link. If you want to use relative paths you must be in 
+              # links directory !!!!!!!!!!!!!!!!!!!!!!
+```
+
+```bash
+df  -h        # Displays humanly readable free disk space
+du  -s <dir>  # Directory size
+mc            # Midnight commander
+    Alt o     # Open parent dir in another panel
+    Ctrl o    # Switch to bash
+```
+
+#### Search:
+```bash
+find <dir>  -name <file>      # Search by name
+    -regex <regex>            # Use regex for name search
+    -not                      # Insert before other options to negate
+    -maxdepth <levels>        # Descend only to levels deep
+    -samefile <file>          # Find all hard links of a file
+    -xdev                     # Don't descend directories on other filesystems
+    -inum <inum>              # Find files with the inode number
+    -type <f|d|b|...>         # Find files of type
+    -delete                   # Delete found files
+    -exec <cmd> {} \;         # Find files and execute command for every found file. `{}` is
+                              # replaced with filename
+    -exec <cmd> {} +          # Find files and execute command with filenames in place of `{}`
+    -atime +/-n               # Find files that were last accessed less or more than n days.
+    -print0 | xargs -0 <cmd>  # Sends found files to a command as parameters. Uses `NUL` 
+                              # character as separator, necessary for filenames with spaces 
+```
+
+```bash
+locate <regex>  — Similar as `find` but using index
+    -i — Ignore case
+    --regex — Interprets all patterns as extended regex
+    -0 | xargs -0 <cmd> — Sends found files to a command as parameters.
+updatedb (sudo) — Update locate index 
+```
+
+#### Misc:
+```bash
+md5sum — Prints md5 sum hash of a file
+read — Read single line from standard input 
+  -n 1 — Print after reading one character
+  -s — Do not echo input coming from terminal
+shred — Securely remove files
+file — Determine file's type
+tree — Ls in a tree-like (hierarchical) format
+install — Copy files and set attributes
+gpg — Decrypt file with password
+    -c — Encrypt
+mktemp — Create a temporary file or directory in `/tmp` and returns it's name.
+rename  s/<from>/<to> <files> — Renames multiple files using `sed` syntax
+rsync — A fast, versatile, remote (and local) file-copying tool
+        -Hbaz -e ssh — `<src_dir> <user>@<host>:<dest_dir>` - Backs up the 'src-dir':
+        `-H` preserves hard links, `-b` renames preexisting destination files (back up), `-a` preserve everything except hard links and `-z` compresses.
+        cmp — Compares two files, similar to diff but also for binaries
+stat — Displays files status
+    -c%X — Time of last modification of the file 
+readlink  -f — Follow link recursively and print files path
+xdg-open — Open file with default application for the file type
+dialog — Display dialog box from shell script
+watch — Execute command periodically
 ```
