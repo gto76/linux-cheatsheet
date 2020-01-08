@@ -246,7 +246,8 @@ rm <file> [...]
 ```
 
 ```bash
-mkdir -p          # Make parents if needed
+mkdir <dir>
+    -p          # Make parents if needed
 ```
 
 ```bash
