@@ -474,6 +474,7 @@ sort — Sorts lines
     -t — Set delimiter for fields (default is space)
     -k — Select by which field to sort 
 uniq — Removes adjacent duplicates
+    -c — Count
     -d — Intersection
     -u — Difference
 column — Columnate text
