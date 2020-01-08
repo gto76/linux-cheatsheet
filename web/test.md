@@ -94,8 +94,8 @@ su  - <user>   # Switches to user.
 ```
 
 ```bash
-man [<section>] <cmd>  # Help on commands.
-               # Section numbers: 1. Programs, 2. System calls, 3. Library calls,
+man <cmd>      # Help on commands.
+    <section>  # Section numbers: 1. Programs, 2. System calls, 3. Library calls,
                # 4. Special files, 5. File formats, 7. Miscellaneous, 8. System 
                # administration commands
 ```
@@ -128,8 +128,8 @@ expr <expr>    # Evaluates passed expression.
 ```bash
 bc [<file>]    # Evaluates input. It's basically a calculator, but also provides some 
                # control commands.
-    echo 1 + 1 | bc          # Prints `2`.
-    echo "scale=5;3/4" | bc  # Prints `.75000`.
+               # `echo 1 + 1 | bc` prints `2`.
+               # `echo "scale=5;3/4" | bc` prints `.75000`.
 ```
 
 ```bash
