@@ -89,20 +89,19 @@ General
 -------
 
 ```bash
-su             # Switches user.
-    - <user>   # Switches to user.
+su  - <user>   # Switches to user.
     -          # Switches to root.
 ```
 
 ```bash
-man            # Help on commands.
-    <section>  # Section numbers: 1. Programs, 2. System calls, 3. Library calls,
+man [<section>] <cmd>  # Help on commands.
+               # Section numbers: 1. Programs, 2. System calls, 3. Library calls,
                # 4. Special files, 5. File formats, 7. Miscellaneous, 8. System 
                # administration commands
 ```
 
 ```bash
-echo           # Prints passed text.
+echo <text>    # Prints passed text.
     -n         # Does not add newline at the end.
     -e         # Enables interpretation of backslashed letters.
 ```
@@ -122,7 +121,7 @@ tee <file>     # Sends output of a program to specified file and to standard
 ```
 
 ```bash
-expr           # Evaluates passed expression.
+expr <expr>    # Evaluates passed expression.
     1 + 1      # Prints `2`.
 ```
 
@@ -141,25 +140,25 @@ sh             # Runs command interpreter (shell). Can run a script even if not 
 ```
 
 ```bash
-bash           # Runs bash command interpreter (shell).
-    -c         # Reads commands from arguments instead of `stdin`.
+bash             # Runs bash command interpreter (shell).
+    -c           # Reads commands from arguments instead of `stdin`.
     -n <script>  # Checks script for errors.
-    -x         # Prints commands before execution. Useful for debugging.
+    -x           # Prints commands before execution. Useful for debugging.
 ```
 
 ```bash
-gcc            # Gnu C compiler. Run `g++` for C++ code.
-    -w         # Supresses warnings (Only prints errors).
-    -Wall      # All warnings.
-    -g         # Compile for debugging.
-    -std=<std> # Sets the standard. Suported standards for C are:  
-               # `c90`, `gnu90`, `c99`, `gnu99`, `c11` and `gnu11`.  
-               # Suported standarts for C++ are:  
-               # `c++98`, `gnu++98`, `c++11` and `gnu++11`.  
-               # `gnu90` and `gnu++98` are the default options.
-    -O<level>  # Optimization level. `0`: Reduce compilation time (default),
-               # `1-3`: - Level of optimization, `s` - Optimize for size, `g` - Optimize
-               # debugging experience.
+gcc <files>      # Gnu C compiler. Run `g++` for C++ code.
+    -w           # Supresses warnings (Only prints errors).
+    -Wall        # All warnings.
+    -g           # Compile for debugging.
+    -std=<std>   # Sets the standard. Suported standards for C are:  
+                 # `c90`, `gnu90`, `c99`, `gnu99`, `c11` and `gnu11`.  
+                 # Suported standarts for C++ are:  
+                 # `c++98`, `gnu++98`, `c++11` and `gnu++11`.  
+                 # `gnu90` and `gnu++98` are the default options.
+    -O<level>    # Optimization level. `0`: Reduce compilation time (default),
+                 # `1-3`: - Level of optimization, `s` - Optimize for size, `g` - Optimize
+                 # debugging experience.
 ```
 
 ```bash
@@ -167,11 +166,17 @@ run-parts <dir>  # Runs all scripts or programs in a directory.
 ```
 
 ```bash
-date                   # Tells and sets date and time.
+date                   # Tells date and time.
     -s <string>        # Sets date.
     +%T -s "10:13:13"  # Sets time.
+```
+
+```bash
 timedatectl            # Controls the system time and date.
     set-timezone CET   # Sets timezone.
+```
+
+```bash
 cal                    # Calendar
 ```
 
