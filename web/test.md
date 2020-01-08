@@ -218,48 +218,55 @@ make                   # Utility that maintains groups of programs.
 Files
 -----
 ```bash
-ls  -d   # List directory names instead of contents
-    -S   # Sort by size 
-    -t   # Sort by time
-    -1   # One file per line
-    ./*  # Ls one level deep
-    -i   # Get inode number of file (file id). Use `sudo find / -inum <number>` to find all 
-         # links that point to same file.
+ls  -d              # List directory names instead of contents
+    -S              # Sort by size 
+    -t              # Sort by time
+    -1              # One file per line
+    ./*             # Ls one level deep
+    -i              # Get inode number of file (file id). Use `sudo find / -inum <number>` to find all 
+                    # links that point to same file.
 ```
 
 ```bash
-cp  -i   # Interactive (Prompts before overwrite)
-    -v   # Verbose (Explains what is being done)
-    -R   # Copy directories recursively
-    -p   # Preserve mode, ownership and timestamps
+cp  -i              # Interactive (Prompts before overwrite)
+    -v              # Verbose (Explains what is being done)
+    -R              # Copy directories recursively
+    -p              # Preserve mode, ownership and timestamps
     --preserve=all  # Also preserves context, links and xattr
 ```
 
 ```bash
-rm  -i   # Interactive (Prompts before every removal)
-    -v   # Verbose (Explains what is being done)
-    -f   # Force remove (Does not prompt, useful if `rm` is aliased with `-i`)
-    -R   # Removes directories and their content recursively 
+rm  -i              # Interactive (Prompts before every removal)
+    -v              # Verbose (Explains what is being done)
+    -f              # Force remove (Does not prompt, useful if `rm` is aliased with `-i`)
+    -R              # Removes directories and their content recursively 
 ```
 
 ```bash
-mkdir -p      # Make parents if needed
-ln            # Makes links to the files
-    -s <file> <link>  # Makes symbolic link. If you want to use relative paths you must be in 
-              # links directory !!!!!!!!!!!!!!!!!!!!!!
+mkdir -p            # Make parents if needed
 ```
 
 ```bash
-df  -h        # Displays humanly readable free disk space
-du  -s <dir>  # Directory size
-mc            # Midnight commander
-    Alt o     # Open parent dir in another panel
-    Ctrl o    # Switch to bash
+ln <file> <link>    # Makes links to the files
+    -s              # Makes symbolic link. If you want to use relative paths you must be in 
+                    # links directory !!!!!!!!!!!!!!!!!!!!!!
+```
+
+```bash
+df  -h              # Displays humanly readable free disk space
+du  -s <dir>        # Directory size
+```
+
+```bash
+mc                  # Midnight commander
+    Alt o           # Open parent dir in another panel
+    Ctrl o          # Switch to bash
 ```
 
 ### Search
 ```bash
-find <dir>  -name <file>      # Search by name
+find <dir> 
+    -name <file>              # Search by name
     -regex <regex>            # Use regex for name search
     -not                      # Insert before other options to negate
     -maxdepth <levels>        # Descend only to levels deep
@@ -277,35 +284,36 @@ find <dir>  -name <file>      # Search by name
 ```
 
 ```bash
-locate <regex>  — Similar as `find` but using index
-    -i — Ignore case
-    --regex — Interprets all patterns as extended regex
-    -0 | xargs -0 <cmd> — Sends found files to a command as parameters.
-updatedb (sudo) — Update locate index 
+locate <regex>                # Similar as `find` but using index
+    -i                        # Ignore case
+    --regex                   # Interprets all patterns as extended regex
+    -0 | xargs -0 <cmd>       # Sends found files to a command as parameters.
+updatedb (sudo)               # Update locate index 
 ```
 
 ### Misc
 ```bash
-md5sum — Prints md5 sum hash of a file
-read — Read single line from standard input 
-  -n 1 — Print after reading one character
-  -s — Do not echo input coming from terminal
-shred — Securely remove files
-file — Determine file's type
-tree — Ls in a tree-like (hierarchical) format
-install — Copy files and set attributes
-gpg — Decrypt file with password
-    -c — Encrypt
-mktemp — Create a temporary file or directory in `/tmp` and returns it's name.
-rename  s/<from>/<to> <files> — Renames multiple files using `sed` syntax
-rsync — A fast, versatile, remote (and local) file-copying tool
-        -Hbaz -e ssh — `<src_dir> <user>@<host>:<dest_dir>` - Backs up the 'src-dir':
-        `-H` preserves hard links, `-b` renames preexisting destination files (back up), `-a` preserve everything except hard links and `-z` compresses.
-        cmp — Compares two files, similar to diff but also for binaries
-stat — Displays files status
-    -c%X — Time of last modification of the file 
-readlink  -f — Follow link recursively and print files path
-xdg-open — Open file with default application for the file type
-dialog — Display dialog box from shell script
-watch — Execute command periodically
+md5sum <file>         # Prints md5 sum hash of a file
+read                  # Read single line from standard input 
+  -n 1                # Print after reading one character
+  -s                  # Do not echo input coming from terminal
+shred <files>         # Securely remove files
+file <file>           # Determine file's type
+tree                  # Ls in a tree-like (hierarchical) format
+install               # Copy files and set attributes
+gpg                   # Decrypt file with password
+    -c                # Encrypt
+mktemp                # Create a temporary file or directory in `/tmp` and returns it's name.
+rename <sed> <files>  # Renames multiple files using `sed` syntax (s/<from>/<to>)
+rsync                 # A fast, versatile, remote (and local) file-copying tool
+    -Hbaz -e ssh — `<src_dir> <user>@<host>:<dest_dir>`  # Backs up the 'src-dir':
+                      # `-H` preserves hard links, `-b` renames preexisting destination files (back up), 
+                      # `-a` preserve everything except hard links and `-z` compresses.
+    cmp               # Compares two files, similar to diff but also for binaries
+stat <file>           # Displays file's status
+    -c%X              # Time of last modification of the file 
+readlink -f           # Follow link recursively and print files path
+xdg-open <file>       # Open file with default application for the file type
+dialog                # Display dialog box from shell script
+watch <cmd>           # Execute command periodically
 ```
